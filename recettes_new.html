@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8" />
+<title>NgCooking</title>
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="c17 engineering" />
+<meta name="copyright" content="c17 engineering" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+<meta name="apple-mobile-web-app-title" content="c17 engineering, recettes de cuisine à partager">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link rel="shortcut icon" href="img/favicon.png" />
+<link rel="image_src" href="img/favicon.png"/>
+<link rel="icon" type="image/png" href="img/favicon.png"/>
+
+<meta name="robots" content="noindex, nofollow" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<a href="/" class="logo">
+						<img src="img/logo_header.png" alt="">
+					</a>
+					<div class="desc">
+						<p>Partagez vos meilleures recettes avec<br/>la communauté NgCooking</p>
+						<p><a class="link" href="home.html"><strong>245 recettes</strong> à découvrir !</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<nav id="nav">
+						<ul class="menu">
+							<li class="page_hom">
+								<a href="home.html">Accueil</a>
+							</li>
+							<li class="page_rec active">
+								<a href="recettes.html">Recettes</a>
+							</li>
+							<li class="page_ing">
+								<a href="ingredients.html">Ingredients</a>
+							</li>
+							<li class="page_com">
+								<a href="communaute.html">Communauté</a>
+							</li>
+						</ul>
+						<div class="account-area">
+							<button type="button" class="button connect" data-popin-open="connect_popin"><span class="icon"></span>Connexion</button>
+							<a href="communaute_details.html" class="button account"><span class="icon"></span>Mon profil</a>
+							<button type="button" class="button deconnect"><span class="glyphicon glyphicon-off"></span>Deconnexion</button>
+						</div>
+					</nav>
+				</div>
+				<div class="col-xs-9">
+					<div class="content" id="content_recettes_new">
+						
+						<h1 class="page-title">Nouvelle recette</h1>
+
+						<section class="section">
+							<form action="">
+								<div class="row">
+									<div class="col-xs-6">
+										<p class="line">
+											<label for="">Le nom de votre recette</label>
+											<input type="text" class="mb0" required>
+										</p>
+										<p class="line">
+											<label for="">Préparation de votre recette</label>
+											<textarea id="recette_desc" class="resizable mb0" required></textarea>
+										</p>
+									</div>
+									<div class="col-xs-6">
+										<p class="line">
+											<label for="">Photo de la recette</label>
+											<input type="file" class="mb0">
+										</p>
+										<p class="line">
+											<img class="current_img" src="img/recette_placeholder.jpg" alt="Visuel recette">
+										</p>
+									</div>
+									<div class="col-xs-12">
+										<div class="hr mt2 mb2"></div>
+									</div>
+									<div class="col-xs-12">
+										<p class="line ac">
+											<label for="">Sélectionnez tous les ingrédients de votre recette</label>
+										</p>
+										<p class="ac">
+											<select name="" id="">
+												<option value="all">Toutes les catégories</option>
+												<option value="viandes">Viandes</option>
+												<option value="legumes">legumes</option>
+												<option value="fruits">fruits</option>
+												<option value="poissons">poissons</option>
+												<option value="produits-laitiers">Produits laitiers</option>
+												<option value="etc">etc...</option>
+											</select>
+											<span class="span-label"><span class="glyphicon glyphicon-menu-right nm"></span></span>
+											<select name="" id="">
+												<option value="">Poulet</option>
+												<option value="">Maïs</option>
+												<option value="">Blé</option>
+												<option value="">Boeuf</option>
+												<option value="">Pomme</option>
+												<option value="">Lait</option>
+												<option value="">Gruyère</option>
+												<option value="etc">etc...</option>
+											</select>
+											<button type="button" class="btn btn_color3"><span class="glyphicon glyphicon-plus"></span></button>
+										</p>
+										<div class="ingredients_list">
+											<ul class="list ac">
+												<li class="item">
+													<img class="item-img" src="img/ingredients/tomate.jpg" alt="tomate">
+													<p class="item-name" title="tomate">tomate</p>
+													<button type="button" class="remove_ingredient"><span class="glyphicon glyphicon-remove"></span></button>
+												</li>
+												<li class="item">
+													<img class="item-img" src="img/ingredients/raisin.jpg" alt="raisin">
+													<p class="item-name" title="raisin">raisin</p>
+													<button type="button" class="remove_ingredient"><span class="glyphicon glyphicon-remove"></span></button>
+												</li>
+												<li class="item">
+													<img class="item-img" src="img/ingredients/kiwi.jpg" alt="kiwi">
+													<p class="item-name" title="kiwi">kiwi</p>
+													<button type="button" class="remove_ingredient"><span class="glyphicon glyphicon-remove"></span></button>
+												</li>
+												<li class="item">
+													<img class="item-img" src="img/ingredients/pasteque.jpg" alt="pasteque">
+													<p class="item-name" title="pasteque">pasteque</p>
+													<button type="button" class="remove_ingredient"><span class="glyphicon glyphicon-remove"></span></button>
+												</li>
+											</ul>
+										</div>
+										<div class="ac">
+											<p class="recette_total_calories">
+												<span class="tit">Valeur calorique <span class="mass">(100g)</span> : </span><span class="val">270<span class="unit">kcal</span></span>
+											</p>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="hr mb2"></div>
+									</div>
+									<div class="col-xs-12 ac">
+										<button type="submit" class="btn btn_color3 recette_save"><span class="glyphicon glyphicon-ok mr0"></span><span>Valider ma recette</span></button>
+									</div>
+								</div>
+							</form>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer id="footer">
+		<div class="container">
+			<div class="row cuisto-img-wrap">
+				<div class="col-xs-3">
+					<div class="cuisto-img"></div>
+				</div>
+				<div class="col-xs-9">
+					<p class="ts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse optio repellat temporibus molestiae ducimus quibusdam eum maiores voluptatum sapiente reprehenderit. Est, modi, tenetur. Tempora perferendis eveniet unde numquam cupiditate nam?</p>
+					<p class="ts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore sed fugit necessitatibus nihil omnis officiis unde consectetur autem non doloribus! Iure ipsum odit veniam ipsam corporis ab, totam, eos sit?</p>
+					<div class="hr"></div>
+					<p class="copyright">copyright @ngcooking 2015-2016</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+</div>
+
+</body>
+</html>
