@@ -194,5 +194,40 @@
 	</footer>
 </div>
 
+<div class="popin" data-popin="connect_popin">
+	<div class="popin-content">
+		<div class="popin-scroll">
+			<p class="popin-title">Connexion</p>
+			<form action="">
+				<p>
+					<label for="co_user" class="fwb">Identifiant (email)</label>
+					<input id="co_user" class="wide" type="text" />
+				</p>
+				<p>
+					<label for="co_pwd" class="fwb">Mot de passe</label>
+					<input id="co_pwd" class="wide" type="text" />
+				</p>
+				<p class="ac nm mt2">
+					<button type="button" class="btn btn_big btn_color1"><span class="glyphicon glyphicon-ok"></span><span class="fwb uc">Valider</span></button>
+				</p>
+			</form>
+		</div>
+		<button class="close popin-close"><span class="glyphicon glyphicon-remove"></span></button>
+	</div>
+	<div class="popin-backlayer"></div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("[data-popin-open]").click(function(){
+			var popin = $(this).attr("data-popin-open");
+			$("[data-popin='"+popin+"']").addClass("displayed");
+		});
+		$("[data-popin] .popin-backlayer, [data-popin] .popin-close").click(function(){
+			$(this).parents(".popin").removeClass("displayed");
+		});
+	});
+</script>
+
 </body>
 </html>

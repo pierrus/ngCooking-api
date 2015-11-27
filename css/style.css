@@ -719,6 +719,12 @@ a.btn {
     background-color: #37d67c !important;
 }
 
+.btn.btn_big {
+    line-height: 30px;
+    padding-left: 26px;
+    padding-right: 26px;
+}
+
 .btn > *:last-child { /* to remove margin right on solo glyphicon */
     margin-right: 0;
 }
@@ -1600,9 +1606,27 @@ body {
 .popin .popin-content {
     background-color: #ffffff;
     position: absolute;
-    top: 10%;right: 10%;bottom: 10%;left: 10%;
+    top: 10%;bottom: 10%;
+    /*
+    left: 10%;
+    right: 10%;
+    */
+
+    left: 50%;
+    width: 320px;
+    margin-left: -160px;
+
     z-index: 9998;
     padding: 30px;
+}
+.popin .popin-content .popin-title {
+    color: #e1d5b8;
+    font-family: "thirsty_roughregular_one", Georgia, "Times New Roman", Times, serif;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1em;
+    line-height: 1.1;
+    position: relative;
 }
 .popin .popin-scroll {
     overflow: auto;
@@ -1617,13 +1641,14 @@ body {
     width: 30px;
     line-height: 30px;
     text-align: center;
-    border: 3px solid #000000;
+    border: 3px solid #ebebeb;
 
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
 .popin .close .glyphicon {
     margin: 0;
+    top: 0;
 }
 
 
