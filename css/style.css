@@ -1770,10 +1770,6 @@ body {
     font-weight: 600;
     display: block;
 }
-#content_recettes_new .line input,
-#content_recettes_new .line textarea {
-    width: 100%;
-}
 #content_recettes_new .ingredients_list {
     background-color: transparent;
     padding: 0;

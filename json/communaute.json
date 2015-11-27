@@ -1,0 +1,86 @@
+[
+	{
+		"firstname": "Hetta",
+		"surname": "Van Deventer",
+		"id": 1,
+		"email": "hetta@mail.com",
+		"password": "c17",
+		"level": 3,
+		"picture": "img/users/hetta-van-deventer.jpg",
+		"city": "Brive la Gaillarde",
+		"birth": 1972,
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Alfredo",
+		"surname": "Linguini",
+		"id": 2,
+		"email": "alfredo@mail.com",
+		"password": "c17",
+		"level": 1,
+		"picture": "img/users/alfredo-linguini.jpg",
+		"city": "Dunkerque",
+		"birth": 1993,
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Jean",
+		"surname": "Bonneau",
+		"id": 3,
+		"email": "jean@mail.com",
+		"password": "c17",
+		"level": 2,
+		"picture": "img/users/jean-bonneau.jpg",
+		"city": "Marseille",
+		"birth": 1982,
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Rose",
+		"surname": "Bihff",
+		"id": 4,
+		"email": "rose@mail.com",
+		"password": "c17",
+		"level": 2,
+		"picture": "img/users/rose-bihff.jpg",
+		"city": "Melun",
+		"birth": 1957,
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Pierre",
+		"surname": "Musarro",
+		"id": 5,
+		"email": "pierrem@mail.com",
+		"password": "c17",
+		"level": 2,
+		"picture": "img/users/pierrem.jpg",
+		"city": "Napoli",
+		"birth": 1981,
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Murasso Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Jonathan",
+		"surname": "Baher",
+		"id": 6,
+		"email": "jonathan@mail.com",
+		"password": "c17",
+		"level": 2,
+		"picture": "img/users/jonathan.jpg",
+		"city": "Tunis",
+		"birth": 1980,
+		"bio": "Lorem ipsum behar dolor sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	},
+	{
+		"firstname": "Nicolas",
+		"surname": "Bouscal",
+		"id": 7,
+		"email": "nicolas@mail.com",
+		"password": "c17",
+		"level": 2,
+		"picture": "img/users/nicolas.jpg",
+		"city": "Dublin",
+		"birth": 1981,
+		"bio": "Lorem ipsum behar dolor bascoul sit amet, consectetur adipisicing elit. Odio aspernatur fuga quisquam iusto, eum veniam vel cumque autem assumenda nulla illum accusamus, expedita animi quaerat temporibus saepe magnam, dolor minima."
+	}
+]
