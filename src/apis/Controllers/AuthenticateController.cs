@@ -31,7 +31,7 @@ namespace apis.Controllers
         public IActionResult LoggedInStatus()
         {
             if (!User.Identity.IsAuthenticated)
-                return new HttpStatusCodeResult((int)System.Net.HttpStatusCode.Unauthorized);
+                return new HttpStatusCodeResult((int)System.Net.HttpStatusCode.Forbidden);
 
             String userName = User.GetUserName();
             String userId = User.GetUserId();
