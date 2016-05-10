@@ -1,0 +1,106 @@
+﻿<div class="content" id="content_recettes_new">
+						
+	<h1 class="page-title">Nouvelle recette</h1>
+
+	<section class="section">
+		<form novalidate>
+			<div class="row">
+				<div class="col-xs-6">
+					<p class="line">
+						<label for="" required>Le nom de votre recette</label>
+						<input type="text" class="mb0 wide" required ng-model="recipe.name">
+					</p>
+					<p class="line">
+						<label for="" required>Catégorie</label>
+						<select class="mb0 wide" ng-init="recipe.category=ingredientsCategories[1]" ng-model="recipe.category" ng-options="category for category in ingredientsCategories">
+						</select>
+					</p>
+					<p class="line">
+						<label for="" required>Préparation de votre recette</label>
+						<textarea id="recette_desc" class="resizable mb0 wide" required ng-model="recipe.preparation"></textarea>
+					</p>
+				</div>
+				<div class="col-xs-6">
+					<p class="line">
+						<label for="">Photo de la recette</label>
+						<input type="file" class="mb0">
+					</p>
+					<p class="line ac">
+						<img class="current_img" src="img/recette_placeholder.jpg" alt="Visuel recette">
+					</p>
+				</div>
+				<div class="col-xs-12">
+					<div class="hr mt2 mb2"></div>
+				</div>
+				<div class="col-xs-12">
+					<p class="line ac">
+						<label for="">Sélectionnez tous les ingrédients de votre recette</label>
+					</p>
+					<p class="ac">
+						<select name="" id="" ng-model="search.category" ng-options="category for category in ingredientsCategories">
+							<option value>Toutes les catégories</option>
+						</select>
+						<span class="span-label"><span class="glyphicon glyphicon-menu-right nm"></span></span>
+						<select name="" id="" ng-model="ingredients.ingredient" ng-options="ingredient.name for ingredient in ingredients | filter:{category:search.category||undefined}">
+						</select>
+						<button type="button" class="btn btn_color3" ng-click="addIngredient(ingredients.ingredient)"><span class="glyphicon glyphicon-plus"></span></button>
+					</p>
+					<div class="ingredients_list">
+						<ul class="list ac">
+							<li class="item" ng-repeat="ingredient in recipe.ingredients track by $index">
+								<img class="item-img" src="img/ingredients/{{ingredient.picture}}" alt="{{ingredient.name}}">
+								<p class="item-name" title="{{ingredient.name}}">{{ingredient.name}}</p>
+								<button type="button" class="remove_ingredient" ng-click="removeIngredient($index)"><span class="glyphicon glyphicon-remove"></span></button>
+							</li>
+						</ul>
+					</div>
+					<div class="ac">
+						<p class="recette_total_calories">
+							<span class="tit">Valeur calorique <span class="mass">(100g)</span> : </span><span class="val">{{recipe.calories}}<span class="unit">kcal</span></span>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="hr mb2"></div>
+				</div>
+				<div class="col-xs-12 ac">
+					<button type="submit" class="btn btn_color3 recette_save" ng-hide="recipe.success" ng-click="addRecipe(recipe)"><span class="glyphicon glyphicon-ok mr0"></span><span>Valider ma recette</span></button>
+				</div>
+
+				<!-- Afficher au clic sur "valider ma recette" lorsque tout s'est bien déroulé -->
+				<div class="col-xs-12" ng-show="recipe.success">
+					<p class="ac mt2 tb">
+						<span class="glyphicon glyphicon-thumbs-up color3"></span>
+						<span>Votre recette a bien été ajoutée !</span>
+					</p>
+					<p class="ac">
+						<a class="btn btn_color1" href="#/member/{{recipe.memberId}}"><span class="glyphicon glyphicon-cutlery"></span><span>Mes recettes</span></a>
+					</p>
+				</div>
+
+				<!-- Afficher au clic sur "valider ma recette" si certains éléments sont manquants -->
+				<div class="col-xs-12"ng-show="recipe.authenticationError">
+					<p class="ac mt2 tb">
+						<span class="glyphicon glyphicon-exclamation-sign color2"></span>
+						<span>Woops ! Vous n'êtes pas identifié</span>
+					</p>
+					<p class="ac">Identifiez-vous en utilisant le bouton "connexion"...</p>
+				</div>
+				<div class="col-xs-12"ng-show="recipe.ingredientsError">
+					<p class="ac mt2 tb">
+						<span class="glyphicon glyphicon-exclamation-sign color2"></span>
+						<span>Woops ! Vous n'avez pas spécifié d'ingrédients</span>
+					</p>
+					<p class="ac">Ajoutez au moins un ingrédient à votre recette...</p>
+				</div>
+				<div class="col-xs-12" ng-show="recipe.infoError">
+					<p class="ac mt2 tb">
+						<span class="glyphicon glyphicon-exclamation-sign color2"></span>
+						<span>Woops ! Il semblerait qu'il manque des informations</span>
+					</p>
+					<p class="ac">Vérifiez les champs nom, catégorie et description...</p>
+				</div>
+			</div>
+		</form>
+	</section>
+</div>

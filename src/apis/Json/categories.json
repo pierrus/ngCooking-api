@@ -1,0 +1,46 @@
+[
+	{
+		"id": "meat",
+		"nameToDisplay": "Viandes"
+	},
+	{
+		"id": "fish",
+		"nameToDisplay": "Poissons"
+	},
+	{
+		"id": "seafood",
+		"nameToDisplay": "Fruits de mer"
+	},
+	{
+		"id": "fruit",
+		"nameToDisplay": "Fruits"
+	},
+	{
+		"id": "vegetable",
+		"nameToDisplay": "Légumes"
+	},
+	{
+		"id": "drink",
+		"nameToDisplay": "Boissons"
+	},
+	{
+		"id": "alcohol",
+		"nameToDisplay": "Alcools"
+	},
+	{
+		"id": "cereal",
+		"nameToDisplay": "Céréales"
+	},
+	{
+		"id": "dairy-product",
+		"nameToDisplay": "Produits laitiers"
+	},
+	{
+		"id": "cheese",
+		"nameToDisplay": "Fromages"
+	},
+	{
+		"id": "other",
+		"nameToDisplay": "Autre"
+	}
+]

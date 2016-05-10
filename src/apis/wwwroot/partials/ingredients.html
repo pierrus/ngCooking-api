@@ -1,0 +1,89 @@
+﻿<div class="content" id="content_ingredients">
+	<h1 class="page-title">Les ingredients</h1>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel">
+				<div class="row imgback">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-12 col-sm-9 fp">
+						<div class="filters">
+							<form action="" novalidate>
+								<div class="filter">
+									<p><label for="">Nom de l'ingrédient</label></p>
+									<p><input type="text" placeholder="ex: Banane" ng-model="search.name"></p>
+								</div>
+								<div class="filter">
+									<p><label for="">Catégorie</label></p>
+									<p>
+										<select ng-model="category" ng-options="category for category in categories">
+										  <option value="">Toutes</option>
+										</select>
+									</p>
+								</div>
+								<div class="filter">
+									<p><label for="">Nombre de calories <span class="fwn">(kcal/100g)</span></label></p>
+									<p>
+										<span class="span-label">entre :</span>
+										<input type="number" class="mr0" placeholder="ex: 70" ng-model="minCalories">
+										<span class="span-label">et</span>
+										<input type="number" placeholder="ex: 220" ng-model="maxCalories">
+									</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="result">
+
+				<div class="ingredients row">
+					<!--
+					<p class=" col-xs-12 blank">Aucun ingrédient ne correspond à votre recherche</p>
+					-->
+
+					<div class="col-xs-6 col-sm-12 ingredient" ng-repeat="ingredient in ingredients | filter:search | filter: caloriesGreaterThan | filter: caloriesLessThan | filter: categoryEquals">
+						<div class="ing-wrap">
+							<div class="top">
+								<p class="name">{{ingredient.name}}</p>
+								<p class="category">{{ingredient.category}}</p>
+								<img class="img" src="img/ingredients/{{ingredient.picture}}" alt="{{ingredient.name}}">
+								<div class="calories-wrap">
+									<div class="val">
+										<span>{{ingredient.calories}} kcal</span>
+										<div class="battery">
+											<!-- pourcentage ci-dessous à moduler en fonction du nombre de calories de l'ingredient sur nombre de calories max -->
+											<div class="level" style="width: {{ingredient.caloriesPercentage}}%;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="bot">
+								<p class="description">Que dire de plus à propos de {{ingredient.name}} ?</p>
+								<div class="list" ng-show="ingredient.similarIngredients.length > 0">
+									<p class="list-title">Aliments similaires</p>
+									<ul>
+										<li class="item" ng-repeat="similarIngredient in ingredient.similarIngredients">
+											<img class="item-img" src="img/ingredients/{{similarIngredient.picture}}" alt="{{similarIngredient.name}}">
+											<p class="item-name" title="{{similarIngredient.name}}">{{similarIngredient.name}}</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row showmore">
+				<div class="col-xs-12">
+					<button type="button" class="btn btn_color1"><span class="glyphicon glyphicon-chevron-down"></span>Afficher d'avantage</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

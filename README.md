@@ -1,0 +1,1 @@
+A demonstration project based on Angular JS and ASPNET CORE MVC API

@@ -1,0 +1,58 @@
+﻿<div class="content" id="content_communaute_details">
+						
+	<section class="section details">
+		<div class="row">
+			<div class="col-xs-3 col-sm-5">
+				<div class="avatar-wrap">
+					<img class="avatar" src="{{member.picture}}" alt="{{member.firstname}} {{member.surname}}">
+				</div>
+			</div>
+			<div class="col-xs-9 col-sm-7">
+				<div class="infos">
+					<h1 class="name">{{member.firstname}} {{member.surname}}</h1>
+					<p class="level">
+						<span class="stars">
+						    <span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(member.level) track by $index"></span>
+						</span>
+						<span class="status">{{member.levelLabel}}</span>
+					</p>
+					<p class="city"><span class="fwb">Ville : </span>{{member.city}}</p>
+					<p class="age"><span class="fwb">Age : </span>{{member.age}} ans</p>
+					<p class="shared"><span class="fwb">{{member.firstname}}</span> a partagé <span class="nb">{{recipes.length}} recette(s)</span></p>
+					<p class="bio"><span class="fwb">BIO : </span>{{member.bio}}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Afficher le bloc ci-dessous uniquement si lutilisateur connecté se rend sur sa propre page -->
+	<section class="section newrecette">
+		<div class="row">
+			<div class="col-xs-12">
+				<p class="c">Vous en avez sous la toque ?!</p>
+				<p class="b">
+					<a href="#/recipe-new" class="btn btn_color1"><span class="glyphicon glyphicon-plus-sign"></span><span>Créez une nouvelle recette</span></a>
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" ng-show="recipes.length > 0">
+		<h2 class="title">~ Les recettes de {{member.firstname}} ~</h2>
+		<div class="recettes row">
+			<div class="col-xs-6 col-sm-3 recette" ng-repeat="recipe in recipes">
+				<a href="#/recipe/{{recipe.id}}">
+					<img src="{{recipe.picture}}" alt="{{recipe.name}}">
+					<div class="top" title="note : {{recipe.mark}}/5">
+						<span class="note">
+							<span class="glyphicon glyphicon-heart" ng-repeat="i in getNumber(recipe.mark) track by $index"></span>
+						</span>
+					</div>
+					<div class="bot">
+						<p class="name">{{recipe.name}}</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+</div>

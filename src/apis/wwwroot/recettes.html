@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8" />
+<title>NgCooking</title>
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="c17 engineering" />
+<meta name="copyright" content="c17 engineering" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+<meta name="apple-mobile-web-app-title" content="c17 engineering, recettes de cuisine à partager">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link rel="shortcut icon" href="img/favicon.png" />
+<link rel="image_src" href="img/favicon.png"/>
+<link rel="icon" type="image/png" href="img/favicon.png"/>
+
+<meta name="robots" content="noindex, nofollow" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<a href="/" class="logo">
+						<img src="img/logo_header.png" alt="">
+					</a>
+					<div class="desc">
+						<p>Partagez vos meilleures recettes avec<br/>la communauté NgCooking</p>
+						<p><a class="link" href="home.html"><strong>245 recettes</strong> à découvrir !</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<nav id="nav">
+						<ul class="menu">
+							<li class="page_hom">
+								<a href="home.html">Accueil</a>
+							</li>
+							<li class="page_rec active">
+								<a href="recettes.html">Recettes</a>
+							</li>
+							<li class="page_ing">
+								<a href="ingredients.html">Ingredients</a>
+							</li>
+							<li class="page_com">
+								<a href="communaute.html">Communauté</a>
+							</li>
+						</ul>
+						<div class="account-area">
+							<button type="button" class="button connect" data-popin-open="connect_popin"><span class="icon"></span>Connexion</button>
+							<a href="communaute_details.html" class="button account"><span class="icon"></span>Mon profil</a>
+							<button type="button" class="button deconnect"><span class="glyphicon glyphicon-off"></span>Deconnexion</button>
+						</div>
+					</nav>
+				</div>
+				<div class="col-xs-9">
+					<div class="content" id="content_recettes">
+						<h1 class="page-title">Les recettes</h1>
+						
+						<section class="section">
+							<h2 class="title">~ Trouver une recette ~</h2>
+							<div class="panel">
+								<div class="row imgback">
+									<div class="col-xs-3"></div>
+									<div class="col-xs-12 col-sm-9 fp">
+										<div class="filters">
+											<form action="">
+												<div class="filter">
+													<p><label for="">Nom de la recette</label></p>
+													<p><input type="text" placeholder="ex: Tajine de poulet"></p>
+												</div>
+												<div class="filter">
+													<p><label for="">Ingrédient(s) utlisé(s) pour la recette</label></p>
+													<p><input type="text" placeholder="ex: poulet;oeuf;farine"></p>
+												</div>
+												<div class="filter">
+													<p><label for="">Valeur calorique de la recette <span class="fwn">(kcal/100g)</span></label></p>
+													<p>
+														<span class="span-label">entre :</span>
+														<input type="number" class="mr0" placeholder="ex: 450">
+														<span class="span-label">et</span>
+														<input type="number" placeholder="ex: 750">
+													</p>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="sort">
+								<p>
+									<span class="span-label">Trier par :</span>
+									<select name="" id="">
+										<option value="az">Ordre alphabétique (A->Z)</option>
+										<option value="za">Ordre alphabétique (Z->A)</option>
+										<option value="new">Les plus récentes d'abord</option>
+										<option value="old">Les plus anciennes d'abord</option>
+										<option value="best">Les mieux notées d'abord</option>
+										<option value="worst">Les moins bien notées d'abord</option>
+										<option value="cal">Du moins calorique au plus calorique</option>
+										<option value="cal_desc">Du plus calorique au moins calorique</option>
+									</select>
+								</p>
+							</div>
+							<div class="result">
+								<div class="recettes row">
+
+									<p class=" col-xs-12 blank">Aucune recette ne correspond à votre recherche</p>
+
+									<!--
+									<div class="col-xs-6 col-sm-4 col-md-3 recette">
+										<a href="recettes_details.html">
+											<img src="img/recettes/tajine-de-poulet.jpg" alt="Le tajine de ta maman">
+											<div class="top" title="note : 3,2/5">
+												<span class="note">
+													<span class="glyphicon glyphicon-heart"></span>
+													<span class="glyphicon glyphicon-heart"></span>
+													<span class="glyphicon glyphicon-heart"></span>
+												</span>
+											</div>
+											<div class="bot">
+												<p class="name">Tajine de poulet</p>
+											</div>
+										</a>
+									</div>
+									-->
+
+								</div>
+							</div>
+
+							<!--
+							<div class="row showmore">
+								<div class="col-xs-12">
+									<button type="button" class="btn btn_color1"><span class="glyphicon glyphicon-chevron-down"></span>Afficher d'avantage</button>
+								</div>
+							</div>
+							-->
+						</section>
+
+						<section class="section">
+							<h2 class="title">~ Meilleures recettes ~</h2>
+							<div class="recettes row">
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/cake-jambon-olive.jpg" alt="Cake au jambon et aux olives">
+										<div class="top" title="note : 2,4/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Cake au jambon et aux olives</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/tajine-de-poulet.jpg" alt="Le tajine de ta maman">
+										<div class="top" title="note : 3,2/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Tajine de poulet</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/saumon-echalotte.jpg" alt="Saumon à l'échalotte">
+										<div class="top" title="note : 3,2/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Saumon à l'échalotte</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/tarte-citron-meringue.jpg" alt="Tarte citron meringué">
+										<div class="top" title="note : 4,7/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Tarte citron meringué</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</section>
+						<section class="section">
+							<h2 class="title">~ Nouvelles recettes ~</h2>
+							<div class="recettes row">
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/tajine-de-poulet.jpg" alt="Le tajine de ta maman">
+										<div class="top" title="note : 3,2/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Tajine de poulet</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/tarte-citron-meringue.jpg" alt="Tarte citron meringué">
+										<div class="top" title="note : 4,7/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Tarte citron meringué</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/cake-jambon-olive.jpg" alt="Cake au jambon et aux olives">
+										<div class="top" title="note : 2,4/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Cake au jambon et aux olives</p>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-sm-3 recette">
+									<a href="recettes_details.html">
+										<img src="img/recettes/saumon-echalotte.jpg" alt="Saumon à l'échalotte">
+										<div class="top" title="note : 3,2/5">
+											<span class="note">
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+												<span class="glyphicon glyphicon-heart"></span>
+											</span>
+										</div>
+										<div class="bot">
+											<p class="name">Saumon à l'échalotte</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</section>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer id="footer">
+		<div class="container">
+			<div class="row cuisto-img-wrap">
+				<div class="col-xs-3">
+					<div class="cuisto-img"></div>
+				</div>
+				<div class="col-xs-9">
+					<p class="ts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse optio repellat temporibus molestiae ducimus quibusdam eum maiores voluptatum sapiente reprehenderit. Est, modi, tenetur. Tempora perferendis eveniet unde numquam cupiditate nam?</p>
+					<p class="ts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore sed fugit necessitatibus nihil omnis officiis unde consectetur autem non doloribus! Iure ipsum odit veniam ipsam corporis ab, totam, eos sit?</p>
+					<div class="hr"></div>
+					<p class="copyright">copyright @ngcooking 2015-2016</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+</div>
+
+<div class="popin" data-popin="connect_popin">
+	<div class="popin-content">
+		<div class="popin-scroll">
+			<p class="popin-title">Connexion</p>
+			<form action="" novalidate>
+				<p>
+					<label for="co_user" class="fwb">Identifiant (email)</label>
+					<input id="co_user" class="wide" type="text" />
+				</p>
+				<p>
+					<label for="co_pwd" class="fwb">Mot de passe</label>
+					<input id="co_pwd" class="wide" type="text" />
+				</p>
+				<p class="ac nm mt2">
+					<button type="button" class="btn btn_big btn_color1"><span class="glyphicon glyphicon-ok"></span><span class="fwb uc">Valider</span></button>
+				</p>
+			</form>
+		</div>
+		<button class="close popin-close"><span class="glyphicon glyphicon-remove"></span></button>
+	</div>
+	<div class="popin-backlayer"></div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("[data-popin-open]").click(function(){
+			var popin = $(this).attr("data-popin-open");
+			$("[data-popin='"+popin+"']").addClass("displayed");
+		});
+		$("[data-popin] .popin-backlayer, [data-popin] .popin-close").click(function(){
+			$(this).parents(".popin").removeClass("displayed");
+		});
+	});
+</script>
+
+</body>
+</html>
