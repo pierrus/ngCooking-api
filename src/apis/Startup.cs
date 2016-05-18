@@ -37,7 +37,8 @@ namespace apis
                         typeof(Controllers.RecettesController),
                         typeof(Controllers.IngredientsController),
                         typeof(Controllers.CommunityController),
-                        typeof(Controllers.AuthenticateController)
+                        typeof(Controllers.AuthenticateController),
+                        typeof(Controllers.CommentairesController)
                     });
 
             services.AddTransient<IUserStore<Models.User>, UserStore<Models.User, IdentityRole<Int32>, Models.NgContext, Int32>>();

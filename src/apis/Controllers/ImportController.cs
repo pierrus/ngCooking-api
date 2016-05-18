@@ -4,16 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Identity;
+using apis.Models;
 
 namespace apis.Controllers
 {
     [Route("api/[controller]")]
     public class ImportController : Controller
     {
-        Models.NgContext _context;
-        UserManager<Models.User> _userManager;
+        NgContext _context;
+        UserManager<User> _userManager;
 
-        public ImportController(Models.NgContext context, UserManager<Models.User> userManager)
+        public ImportController(NgContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -21,20 +22,20 @@ namespace apis.Controllers
 
         // GET: /<controller>/
         [HttpGet]
-        public async Task<IEnumerable<Models.Categorie>> Get()
+        public async Task<IEnumerable<Categorie>> Get()
         {
             Newtonsoft.Json.JsonSerializer jsonSer = new Newtonsoft.Json.JsonSerializer();
 
             #region Users
 
-            List<Models.User> users;
+            List<User> users;
 
             using (var str = new System.IO.FileStream("Json/communaute.json", System.IO.FileMode.Open))
             {
                 var sr = new System.IO.StreamReader(str);
                 var reader = new Newtonsoft.Json.JsonTextReader(sr);
 
-                users = jsonSer.Deserialize<List<Models.User>>(reader);
+                users = jsonSer.Deserialize<List<User>>(reader);
 
                 foreach (var user in users)
                 {
@@ -60,7 +61,7 @@ namespace apis.Controllers
                 var sr = new System.IO.StreamReader(str);
                 var reader = new Newtonsoft.Json.JsonTextReader(sr);
 
-                List<Models.Categorie> categories = jsonSer.Deserialize<List<Models.Categorie>>(reader);
+                List<Categorie> categories = jsonSer.Deserialize<List<Categorie>>(reader);
 
                 foreach (var cat in categories)
                 {
@@ -80,12 +81,12 @@ namespace apis.Controllers
                 var sr = new System.IO.StreamReader(str);
                 var reader = new Newtonsoft.Json.JsonTextReader(sr);
 
-                List<Models.Ingredient> ingredients = jsonSer.Deserialize<List<Models.Ingredient>>(reader);
+                List<Ingredient> ingredients = jsonSer.Deserialize<List<Ingredient>>(reader);
 
                 foreach (var ingredient in ingredients)
                 {
                     if (!_context.Categories.Any(c => c.Id == ingredient.CategoryId))
-                        _context.Categories.Add(new Models.Categorie { Id = ingredient.CategoryId.ToLower(), NameToDisplay = ingredient.CategoryId });
+                        _context.Categories.Add(new Categorie { Id = ingredient.CategoryId.ToLower(), NameToDisplay = ingredient.CategoryId });
 
                     if (!_context.Ingredients.Any(ig => ig.Id == ingredient.Id))
                         _context.Ingredients.Add(ingredient);
@@ -103,13 +104,13 @@ namespace apis.Controllers
                 var sr = new System.IO.StreamReader(str);
                 var reader = new Newtonsoft.Json.JsonTextReader(sr);
 
-                List<Models.Recette> recettes = jsonSer.Deserialize<List<Models.Recette>>(reader);
+                List<Recette> recettes = jsonSer.Deserialize<List<Recette>>(reader);
 
                 foreach (var recette in recettes)
                 {
                     if (!_context.Recettes.Any(r => r.Id == recette.Id))
                     {
-                        Models.User creator = users.Where(u => u.JsonId == recette.CreatorId).FirstOrDefault();
+                        User creator = users.Where(u => u.JsonId == recette.CreatorId).FirstOrDefault();
                         recette.CreatorId = creator.Id;
                         _context.Recettes.Add(recette);
                     }
@@ -117,16 +118,16 @@ namespace apis.Controllers
                     foreach (String ingredientId in recette.Ingredients)
                     {
                         if (!_context.Ingredients.Any(ig => ig.Id == ingredientId))
-                            _context.Ingredients.Add(new Models.Ingredient { Calories = 100, Id = ingredientId, IsAvailable = true, Name = ingredientId, Picture = "pomme-de-terre.jpg", CategoryId = "vegetable" });
+                            _context.Ingredients.Add(new Ingredient { Calories = 100, Id = ingredientId, IsAvailable = true, Name = ingredientId, Picture = "pomme-de-terre.jpg", CategoryId = "vegetable" });
 
                         if (!_context.IngredientsRecettes.Any(igr => igr.IngredientId == ingredientId && igr.RecetteId == recette.Id))
-                            _context.IngredientsRecettes.Add(new Models.IngredientRecette { IngredientId = ingredientId, RecetteId = recette.Id });
+                            _context.IngredientsRecettes.Add(new IngredientRecette { IngredientId = ingredientId, RecetteId = recette.Id });
                     }
 
                     if (recette.Commentaires != null)
-                        foreach (Models.Commentaire comment in recette.Commentaires)
+                        foreach (Commentaire comment in recette.Commentaires)
                         {
-                            Models.User creator = users.Where(u => u.JsonId == comment.UserId).FirstOrDefault();
+                            User creator = users.Where(u => u.JsonId == comment.UserId).FirstOrDefault();
                             comment.UserId = creator.Id;
 
                             if (!_context.Commentaires.Any(c => c.UserId == comment.UserId && c.RecetteId == recette.Id))
@@ -144,7 +145,7 @@ namespace apis.Controllers
             #endregion
                         
 
-            return _context.Ingredients.Select<Models.Ingredient, Models.Categorie>(i => i.Category);
+            return _context.Ingredients.Select<Ingredient, Categorie>(i => i.Category);
         }
     }
 }

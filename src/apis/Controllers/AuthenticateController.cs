@@ -7,19 +7,20 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
 using Microsoft.AspNet.Authorization;
+using apis.Models;
 
 namespace apis.Controllers
 {
     [Route("api/[controller]")]
     public class AuthenticateController : Controller
     {
-        UserManager<Models.User> _userManager;
-        SignInManager<Models.User> _signInManager;
-        Models.NgContext _context;
+        UserManager<User> _userManager;
+        SignInManager<User> _signInManager;
+        NgContext _context;
 
-        public AuthenticateController(UserManager<Models.User> userManager,
-            SignInManager<Models.User> signInManager,
-            Models.NgContext context)
+        public AuthenticateController(UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            NgContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -36,7 +37,7 @@ namespace apis.Controllers
             String userName = User.GetUserName();
             String userId = User.GetUserId();
 
-            Models.User user = _context.Users.Where(u => u.UserName == userName).FirstOrDefault();
+            User user = _context.Users.Where(u => u.UserName == userName).FirstOrDefault();
 
             if (user == null)
                 return new HttpStatusCodeResult((int)System.Net.HttpStatusCode.Unauthorized);
@@ -63,9 +64,9 @@ namespace apis.Controllers
             return new HttpStatusCodeResult(200);
         }
 
-        private ControllersModels.User GetUser(Models.User user)
+        private User GetUser(User user)
         {
-            return new ControllersModels.User
+            return new User
             {
                 Bio = user.Bio,
                 BirthYear = user.BirthYear,

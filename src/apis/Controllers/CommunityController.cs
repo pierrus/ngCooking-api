@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using apis.Models;
 
 namespace apis.Controllers
 {
     [Route("api/[controller]")]
     public class CommunityController : Controller
     {
-        Models.NgContext _context;
+        apis.Models.NgContext _context;
 
-        public CommunityController(Models.NgContext context)
+        public CommunityController(NgContext context)
         {
             _context = context;
         }
@@ -26,7 +27,7 @@ namespace apis.Controllers
 
         // GET: api/recettes
         [HttpGet]
-        public IEnumerable<ControllersModels.User> Get()
+        public IEnumerable<Models.User> Get()
         {
             var users = _context.Users;
 
@@ -35,7 +36,7 @@ namespace apis.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ControllersModels.User Get(Int32 id)
+        public Models.User Get(Int32 id)
         {
             var user = _context.Users.Where(u => u.Id == id)
                 .FirstOrDefault();
@@ -43,9 +44,9 @@ namespace apis.Controllers
             return GetUser(user);
         }
 
-        private ControllersModels.User GetUser(Models.User user)
+        private Models.User GetUser(User user)
         {
-            return new ControllersModels.User
+            return new Models.User
             {
                 Bio = user.Bio,
                 BirthYear = user.BirthYear,

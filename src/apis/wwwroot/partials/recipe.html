@@ -89,7 +89,7 @@
 				<ul class="comments">
 					<li class="comment" ng-repeat="comment in recipe.comments">
 						<p class="name">{{comment.title}}<span class="note">{{comment.mark}}/5</span></p>
-						<p class="by">par <a href="#/member/{{comment.userId}}">{{comment.member.firstname}} {{comment.member.surname}}</a></p>
+						<p class="by">par <a href="#/member/{{comment.id}}">{{comment.member.firstname}} {{comment.member.surname}}</a></p>
 						<p class="text">{{comment.comment}}</p>
 					</li>
 				</ul>

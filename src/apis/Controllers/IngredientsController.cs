@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using apis.Models;
 
 namespace apis.Controllers
 {
     [Route("api/[controller]")]
     public class IngredientsController : Controller
     {
-        Models.NgContext _context;
+        NgContext _context;
 
-        public IngredientsController(Models.NgContext context)
+        public IngredientsController(NgContext context)
         {
             _context = context;
         }
@@ -24,7 +25,7 @@ namespace apis.Controllers
 
         // GET: api/recettes
         [HttpGet]
-        public IEnumerable<Models.Ingredient> Get()
+        public IEnumerable<Ingredient> Get()
         {
             var ingredients = _context.Ingredients;
 
@@ -33,7 +34,7 @@ namespace apis.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Models.Ingredient Get(String id)
+        public Ingredient Get(String id)
         {
             var ingredient = _context.Ingredients.Where(r => r.Id == id).FirstOrDefault();
 

@@ -54,5 +54,8 @@ namespace apis.Models
 
         [JsonIgnore]
         public User User { get; set; }
+
+        [JsonProperty("calories")]
+        public Int32 Calories { get; set; }
     }
 }

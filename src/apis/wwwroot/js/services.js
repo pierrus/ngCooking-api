@@ -36,7 +36,7 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 	
 	  recipesService.recipes = recipesService.rawRecipes;
 	
-	  /* Calcul des moyennes des notes pour chaque recette */
+	  /* Calcul des moyennes des notes et liste d'ingredients pour chaque recette */
 	  $.each(recipesService.recipes, function(index, value) {
 		var marksSum = 0;
 		
@@ -45,8 +45,6 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 		
 		$.each(value.comments, function(markIndex, commentValue) {
 			marksSum += commentValue.mark;
-			
-			commentValue.member = communityService.getMember(commentValue.userId);
 		});
 		
 		if (value.comments.length > 0) {
@@ -94,6 +92,9 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
   };
   
   recipesService.getNumber = function(num) {
+    if (num === undefined)
+	  return new Array(0);
+  
 	return new Array(Math.round(num));
   };
   
@@ -164,19 +165,31 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
   
     var deferred = $q.defer();
   
-    var promise = this.getRecipes();
+    $http.get(configService.getUrl('recettes?id=' + recipeId)).success(function(recipe) {
 	
-	promise.then(function(recipes) {
-		var recipe = null;
-	  
-		$.each(recipes, function(index, currentRecipe) {
-		  if (currentRecipe.id === recipeId)
-		  {
-			recipe = currentRecipe;
-		  }
+	  var marksSum = 0;
+		
+		if (!recipe.comments)
+			recipe.comments = new Array();
+		
+		$.each(recipe.comments, function(markIndex, commentValue) {
+			marksSum += commentValue.mark;
 		});
-	  
-		deferred.resolve(recipe);
+		
+		if (recipe.comments.length > 0) {
+			recipe.mark = marksSum / recipe.comments.length; }
+		else {
+			recipe.mark = 0; }
+		
+		recipeIngredients = recipe.ingredients;
+		recipe.ingredients = new Array();
+
+		$.each(recipesService.ingredients, function(index, currentIngredient) {
+		  if ($.inArray(currentIngredient.name.toLowerCase(), recipeIngredients) != -1)
+			recipe.ingredients.push(currentIngredient);
+		});
+	
+	  deferred.resolve(recipe);
 	});
 	
 	return deferred.promise;	  
@@ -188,14 +201,14 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 	var recipe = null;
 	
 	$.each(recipesService.recipes, function(index, currentRecipe) {
-	  if (currentRecipe.id === comment.recipeId)
+	  if (currentRecipe.id === comment.recetteId)
 	  {
 		  currentRecipe.comments.push({
-		    userId: comment.memberId,
+		    userId: comment.userId,
 		    title: comment.title,
 		    comment: comment.comment,
 		    mark: Number(comment.mark),
-			member: communityService.getMember(comment.memberId)
+			member: communityService.getMember(comment.userId)
 		  });
 		  
 		  var marksSum = 0;
@@ -209,6 +222,22 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 			currentRecipe.mark = 0; }		    
 		  
 		  recipe = currentRecipe;
+		  
+		  var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+		  var data = $.param({comment: {
+			comment: comment.comment,
+			mark: Number(comment.mark),
+			recetteId: comment.recetteId,
+			title: comment.title,
+			userId: comment.userId
+		  }});
+		  $http.put(configService.getUrl('commentaires'), data, config).then(
+			function() { console.log('comment added OK'); deferred.resolve(); },
+			function() { console.log('comment added FAILED'); deferred.resolve(); });
 	  }
 	});
 	
@@ -357,22 +386,7 @@ ngCookingServices.factory('communityService', ['$http', '$q', '$cookies', 'confi
   /* A refactoriser je n'aime pas le côté synchrone / asynchrone c'est imprévisible */
   communityService.getMember = function(memberId) {
     memberId = Number(memberId);  
-    if (communityService.members.length > 0)
-	{
-	  var member = null;
-	  
-	  $.each(communityService.members, function(index, currentMember)
-	  {
-	    if (currentMember.id === memberId)
-		{
-		  member = currentMember;
-		}
-	  });
-	  
-	  return member;
-	}
-	else
-	{
+
 	  var deferred = $q.defer();
 	
 	  this.getMembers().then(function (members) {
@@ -388,10 +402,12 @@ ngCookingServices.factory('communityService', ['$http', '$q', '$cookies', 'confi
 	  });
 	  
 	  return deferred.promise;
-	}
   };
   
-  communityService.login = function(email, password) {	
+  communityService.login = function(email, password) {
+  
+    var deferred = $q.defer();
+  
 	var data = $.param({
 		email: email,
 		password: password
@@ -403,55 +419,36 @@ ngCookingServices.factory('communityService', ['$http', '$q', '$cookies', 'confi
                 }
             }
 	
-	$http.post(configService.getUrl('authenticate'), data, config).then(function() { console.log('login OK'); }, function() { console.log('login FAILED'); });
+	$http.post(configService.getUrl('authenticate'), data, config).then(
+		function() { console.log('login OK'); deferred.resolve(); },
+		function() { console.log('login FAILED'); deferred.resolve(); });
+	
+	return deferred.promise;
   }
   
   communityService.logout = function() {
-    //$cookies.remove('ngCookingLogin');
+    $http.delete(configService.getUrl('authenticate'));
   }
   
   communityService.getAuthenticationStatus = function() {
   
     var deferred = $q.defer();
 		
-	this.getMembers().then(function (members) {
+	var loggedInMember = null;
 	
-	  var loggedIn = false;
-	  var loggedInMember = null;
-	
-	  $http.get(configService.getUrl('authenticate')).then(
-		function(data) { console.log('retrieved user' + data); loggedIn = true; loggedInMember = data; },
-		function() { console.log('cannot retrieve user'); }
-	  );
-	
-	  //var ngCookingLoginCookie = $cookies.get('ngCookingLogin');
-	  //var ngCookingPasswordCookie = $cookies.get('ngCookingPassword');
-	  
-	  //if (ngCookingLoginCookie === null || ngCookingLoginCookie === undefined)
-	    //deferred.resolve({ loggedIn: false });
-	  
-	  //var loggedInMember = null;
-	  
-	  /*$.each(members, function(index, member)
+	$http.get(configService.getUrl('authenticate')).then(
+	  function(data)
 	  {
-	    if (member.email === ngCookingLoginCookie && member.password === ngCookingPasswordCookie)
-		{
-		  loggedInMember = member;
-		  return;
-		}
-	  });
-	  
-	  if (loggedInMember === null)
-	    deferred.resolve({ loggedIn: false });
-	  else
-	    deferred.resolve({ loggedIn: true, member: loggedInMember });*/
-	  
-	  if (loggedIn === true)
-	    deferred.resolve({ loggedIn: loggedIn, member: loggedInMember });
-	  else
-	    deferred.resolve({ loggedIn: false });
-		
-	});
+		console.log('Already logged in:' + data);
+		loggedInMember = data;
+		deferred.resolve({ loggedIn: true, member: loggedInMember });
+	  },
+	  function()
+	  {
+		console.log('Not logged in');
+		deferred.resolve({ loggedIn: false });
+	  }
+    );
 	
 	return deferred.promise;
   }

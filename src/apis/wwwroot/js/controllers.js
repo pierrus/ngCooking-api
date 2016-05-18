@@ -1,12 +1,23 @@
 var ngCookingControllers = angular.module('ngCookingControllers', []);
 
-ngCookingControllers.controller('HomeCtrl', ['$scope', 'recipesService',
-  function ($scope, recipesService) {
+ngCookingControllers.controller('HomeCtrl', ['$scope', 'recipesService', 'communityService', '$rootScope',
+  function ($scope, recipesService, communityService, $rootScope) {
 	recipesService.getRecipes().then(
 	  function(recipes) {
 	    $scope.recipes = recipes;
 	  }
 	);
+	
+	communityService.getAuthenticationStatus().then(
+	  function(data) {
+		$scope.showAddNewRecipe = data.loggedIn;
+	  }
+	);
+	
+	$rootScope.$on('authenticationStatusChange', function(event, loggedInStatus) {
+	  console.log('logged in event updated');
+	  $scope.showAddNewRecipe = loggedInStatus;
+	});
 	
 	$scope.getNumber = recipesService.getNumber;
   }]);
@@ -14,7 +25,9 @@ ngCookingControllers.controller('HomeCtrl', ['$scope', 'recipesService',
 ngCookingControllers.controller('RecipesCtrl', ['$scope', 'recipesService',
   function($scope, recipesService) {
     recipesService.getRecipes().then(
-	  function(recipes) { $scope.recipes = recipes; }
+	  function(recipes) {
+		$scope.recipes = recipes;
+	  }
 	);
 	
 	$scope.filterIngredients = function(item)
@@ -245,11 +258,11 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 	  
 	  communityService.getAuthenticationStatus().then(function(status) {
 	  
-	    if (status.isLogged === false)
+	    if (status.loggedIn === false)
 		  return;
 		  
-		comment.recipeId = $scope.recipe.id;
-	    comment.memberId = status.member.id;
+		comment.recetteId = $scope.recipe.id;
+	    comment.userId = status.member.data.Id;
 	    var recipe = recipesService.addNewComment(comment);
 	    $scope.recipe.comments = recipe.comments;
 	    $scope.recipe.mark = recipe.mark;
@@ -257,23 +270,26 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 	};	
   }]);
   
-ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'recipesService', '$routeParams', '$location',
-  function ($scope, communityService, recipesService, $routeParams, $location) {
+ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'recipesService', '$routeParams', '$location', '$rootScope',
+  function ($scope, communityService, recipesService, $routeParams, $location, $rootScope) {
     
 	/* Login method */
 	$scope.login = function(email, password) {
-	  communityService.login(email, password);
-	  communityService.getAuthenticationStatus().then(function(status){
-		if (status.loggedIn === true) {
-		  $scope.displayLoginModal = false;
-		  $scope.loggedIn = true;
-		  $scope.memberId = status.member.id;
-		}
-		else {
-		  $scope.loggedIn = false;
-		  $scope.memberId = null;
-		}
-	  });
+	  communityService.login(email, password).then(function() {
+		  communityService.getAuthenticationStatus().then(function(status){
+			if (status.loggedIn === true) {
+			  $scope.displayLoginModal = false;
+			  $scope.loggedIn = true;
+			  $scope.memberId = status.member.id;
+			}
+			else {
+			  $scope.loggedIn = false;
+			  $scope.memberId = null;
+			}
+			
+			$scope.$emit('authenticationStatusChange', status.loggedIn);
+		  });
+	   });
 	};
 	
 	/* Login init */
@@ -286,6 +302,8 @@ ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'rec
 		$scope.loggedIn = false;
 		$scope.memberId = null;
 	  }
+	  
+	  $scope.$emit('authenticationStatusChange', status.loggedIn);
 	});
 	$scope.displayLoginModal = false;
 	
@@ -294,6 +312,7 @@ ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'rec
 	  communityService.logout();
 	  $scope.loggedIn = false;
 	  $scope.memberId = null;
+	  $scope.$emit('authenticationStatusChange', false);
 	};
 	
 	$scope.showLoginPopin = function() {
@@ -311,18 +330,14 @@ ngCookingControllers.controller('CommunityDetailCtrl', ['$scope', 'communityServ
     $scope.memberId = $routeParams.memberId;
 	$scope.getNumber = recipesService.getNumber;
   
-	var member = communityService.getMember($routeParams.memberId);
+	communityService.getMember($routeParams.memberId).then(function(member) {
+		if (member === null || member === undefined)
+			$location.path('/community');
 	
-	//res.then(function(member) {
+		$scope.member = member;
 	
-    if (member === null || member === undefined)
-      $location.path('/community');
-	
-    $scope.member = member;
-	//});	
-	
-	recipesService.getUserRecipes($routeParams.memberId).then(function(userRecipes) {
-	  $scope.recipes = userRecipes;
+		recipesService.getUserRecipes($routeParams.memberId).then(function(userRecipes) {
+		  $scope.recipes = userRecipes;
+		});
 	});
-	
   }]);

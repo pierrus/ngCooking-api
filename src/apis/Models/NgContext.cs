@@ -75,6 +75,9 @@ namespace apis.Models
             builder.Entity<User>()
                 .Ignore(u => u.Password);
 
+            builder.Entity<Recette>()
+                .Ignore(u => u.Calories);
+
             base.OnModelCreating(builder);
         }
     }

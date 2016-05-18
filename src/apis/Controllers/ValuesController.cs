@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using apis.Models;
 
 namespace apis.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        Models.NgContext _context;
+        NgContext _context;
 
-        public ValuesController(Models.NgContext context)
+        public ValuesController(NgContext context)
         {
             _context = context;
         }

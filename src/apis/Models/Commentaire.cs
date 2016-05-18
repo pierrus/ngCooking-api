@@ -11,7 +11,7 @@ namespace apis.Models
         [JsonProperty("id")]
         public Int32 Id { get; set; }
 
-        [JsonIgnore]
+        [JsonProperty("member")]
         public User User { get; set; }
 
         [JsonProperty("userId")]

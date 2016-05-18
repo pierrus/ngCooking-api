@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace apis.ControllersModels
+namespace apis.Controllers.Models
 {
     public class User
     {
