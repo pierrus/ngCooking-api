@@ -52,9 +52,31 @@ namespace apis.Controllers
         }
 
         [HttpPut]
-        public void Put(Recette recette)
+        public void Put(Recette recipe)
         {
+            recipe.Id = recipe.Name.Replace(" ", "-").ToLower();
 
+            if (_context.Recettes.Any(r => r.Id == recipe.Id))
+                recipe.Id = String.Format("{0}-{1}", recipe.Id, Guid.NewGuid());
+
+            recipe.IsAvailable = true;
+
+            _context.Recettes.Add(recipe);
+
+            _context.SaveChanges();
+
+            if (recipe.IngredientsRecettes == null)
+                recipe.IngredientsRecettes = new List<IngredientRecette>();
+
+            foreach (String ingredientId in recipe.Ingredients)
+            {
+                Ingredient ig = _context.Ingredients.Where(i => i.Id == ingredientId).FirstOrDefault();
+
+                if (ig != null)
+                    recipe.IngredientsRecettes.Add(new IngredientRecette { IngredientId = ig.Id, RecetteId = recipe.Id });
+            }
+
+            _context.SaveChanges();
         }
     }
 }

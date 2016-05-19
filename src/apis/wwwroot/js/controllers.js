@@ -43,7 +43,7 @@ ngCookingControllers.controller('RecipesCtrl', ['$scope', 'recipesService',
 		$.each(searchedIngredients, function(index, searchedIngredient) {
 		  var foundSearchedIngredient = false;
 		  $.each(item.ingredients, function(index2, recipeIngredient) {
-		    if (recipeIngredient.indexOf(searchedIngredient) !== -1) {
+		    if (recipeIngredient.name.toLowerCase().indexOf(searchedIngredient.toLowerCase()) !== -1) {
 			  foundSearchedIngredient = true
 			}
 		  });
@@ -110,6 +110,10 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 	  function(ingredients) { $scope.ingredients = ingredients; }
 	);
 	
+	communityService.getAuthenticationStatus().then(function(status){
+	  $scope.creatorId = status.member.data.Id;
+	});
+	
 	$scope.recipe = {};
 	$scope.recipe.calories = 0;
 	$scope.recipe.ingredients = new Array();
@@ -132,7 +136,7 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 	$scope.addRecipe = function(recipe) {
 	
 	  /* Basic info */
-	  if (recipe.name === null || recipe.name === undefined || recipe.category === null || recipe.category === undefined
+	  if (recipe.name === null || recipe.name === undefined
 	      || recipe.preparation === null || recipe.preparation === undefined)
 	  {
 	    $scope.recipe.infoError = true;
@@ -147,23 +151,9 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 		return;
 	  }
 	  recipe.ingredientsError = false;
-	
-	  /* Authentication status */
-	  communityService.getAuthenticationStatus().then(function(status)
-	  {
-	    if (status.loggedIn === false)
-		{
-		  $scope.recipe.authenticationError = true;
-		  return;
-		}
-		
-		$scope.recipe.authenticationError = false;
-		
-		recipe.creatorId = status.member.id;
-	
-	    $scope.recipe.memberId = status.member.id;
-		$scope.recipe.success = recipesService.addRecipe(recipe);
-	  })
+
+	  recipe.creatorId = $scope.creatorId;
+	  $scope.recipe.success = recipesService.addRecipe(recipe);
 	};
 	
   }]);
@@ -280,7 +270,7 @@ ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'rec
 			if (status.loggedIn === true) {
 			  $scope.displayLoginModal = false;
 			  $scope.loggedIn = true;
-			  $scope.memberId = status.member.id;
+			  $scope.memberId = status.member.data.Id;
 			}
 			else {
 			  $scope.loggedIn = false;
@@ -296,7 +286,7 @@ ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'rec
 	communityService.getAuthenticationStatus().then(function(status){
 	  if (status.loggedIn === true) {
 		$scope.loggedIn = true;
-		$scope.memberId = status.member.id;
+		$scope.memberId = status.member.data.Id;
 	  }
       else {
 		$scope.loggedIn = false;
@@ -329,6 +319,17 @@ ngCookingControllers.controller('CommunityDetailCtrl', ['$scope', 'communityServ
   
     $scope.memberId = $routeParams.memberId;
 	$scope.getNumber = recipesService.getNumber;
+	
+	communityService.getAuthenticationStatus().then(function(status){
+	  if (status.loggedIn === true && status.member.data.Id === Number($routeParams.memberId)) {
+		$scope.displayAddRecipe = true;
+	  }
+      else {
+		$scope.displayAddRecipe = false;
+	  }
+	  
+	  $scope.$emit('authenticationStatusChange', status.loggedIn);
+	});
   
 	communityService.getMember($routeParams.memberId).then(function(member) {
 		if (member === null || member === undefined)

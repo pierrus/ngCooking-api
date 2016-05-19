@@ -157,6 +157,30 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 	
     recipesService.recipes.push(recipe);
 	
+	var config = {
+			headers : {
+				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+			}
+		}
+		
+	var ingredientsList = new Array();
+	$.each(recipe.ingredients, function(index, ig) {
+		ingredientsList.push(ig.id);
+	});
+		
+	var data = $.param({recipe: {
+		name: recipe.name,
+		preparation: recipe.preparation,
+		ingredients: ingredientsList,
+		mark: 0,
+		creatorId: recipe.creatorId,
+		picture: 'img/recettes/tajine-de-poulet.jpg'
+	  }});
+	  
+	$http.put(configService.getUrl('recettes'), data, config).then(
+		function() { console.log('recette added OK'); },
+		function() { console.log('recette added FAILED'); });
+	
 	return true;
   };
   
