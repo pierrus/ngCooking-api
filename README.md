@@ -19,5 +19,4 @@ TODO
 Error messages handling on recipe add, login
  - LoginCtrl / $scope.login
  - RecipeNewCtrl / $scope.addRecipe
-Changer les PUT en POST pour les créations de recette et de commentaires
 Ajouter GRUNT pour la minification

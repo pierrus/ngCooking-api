@@ -157,7 +157,7 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 	
     recipesService.recipes.push(recipe);
 	
-	/* Image file + recipe data upload */
+	/* Image fil + recipe date upload */
 	var config = {
 			headers : {
 				'Content-Type': undefined
@@ -268,7 +268,7 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 			title: comment.title,
 			userId: comment.userId
 		  }});
-		  $http.put(configService.getUrl('commentaires'), data, config).then(
+		  $http.post(configService.getUrl('commentaires'), data, config).then(
 			function() { console.log('comment added OK'); deferred.resolve(); },
 			function() { console.log('comment added FAILED'); deferred.resolve(); });
 	  }

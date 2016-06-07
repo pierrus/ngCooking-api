@@ -17,8 +17,8 @@ namespace apis.Controllers
             _context = context;
         }
 
-        [HttpPut]
-        public void Put(Commentaire comment)
+        [HttpPost]
+        public void Post(Commentaire comment)
         {
             _context.Commentaires.Add(comment);
 
