@@ -18,7 +18,7 @@
 				<div class="col-xs-6">
 					<p class="line">
 						<label for="">Photo de la recette</label>
-						<input type="file" class="mb0">
+						<input type="file" class="mb0" required name="recipePicture" ng-value="recipePicture" value="{{recipePicture}}" file-model="recipePicture" set-file-data="recipePicture = value;">
 					</p>
 					<p class="line ac">
 						<img class="current_img" src="img/recette_placeholder.jpg" alt="Visuel recette">

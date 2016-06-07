@@ -150,16 +150,17 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 	
 	recipe.comments = new Array();
     recipe.isAvailable = true;
-	recipe.picture = 'img/recettes/tajine-de-poulet.jpg';
+	//recipe.picture = 'img/recettes/tajine-de-poulet.jpg';
 	recipe.id = recipe.name.toLowerCase().replace(' ', '-').replace('à', 'a').replace('é', 'e').replace('è', 'e').replace('ê', 'e');
 	recipe.mark = 0;
 	recipe.index = recipesService.recipes.length;
 	
     recipesService.recipes.push(recipe);
 	
+	/* Image file + recipe data upload */
 	var config = {
 			headers : {
-				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+				'Content-Type': undefined
 			}
 		}
 		
@@ -168,16 +169,24 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 		ingredientsList.push(ig.id);
 	});
 		
-	var data = $.param({recipe: {
+	/*var data = $.param({recipe: {
 		name: recipe.name,
 		preparation: recipe.preparation,
 		ingredients: ingredientsList,
 		mark: 0,
 		creatorId: recipe.creatorId,
-		picture: 'img/recettes/tajine-de-poulet.jpg'
-	  }});
+		picture: recipe.picture
+	  }});*/
 	  
-	$http.put(configService.getUrl('recettes'), data, config).then(
+	var data = new FormData();
+	data.append("rawPicture", recipe.picture);
+	data.append("name", recipe.name);
+	data.append("preparation", recipe.preparation);
+	data.append("ingredients", ingredientsList);
+	data.append("mark", 0);
+	data.append("creatorId", recipe.creatorId);
+	  
+	$http.post(configService.getUrl('recettes'), data, config).then(
 		function() { console.log('recette added OK'); },
 		function() { console.log('recette added FAILED'); });
 	
@@ -243,7 +252,7 @@ ngCookingServices.factory('recipesService', ['$http', 'communityService', '$q', 
 		  if (currentRecipe.comments.length > 0) {
 			currentRecipe.mark = marksSum / currentRecipe.comments.length; }
 		  else {
-			currentRecipe.mark = 0; }		    
+			currentRecipe.mark = 0; }
 		  
 		  recipe = currentRecipe;
 		  
