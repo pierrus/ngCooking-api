@@ -135,6 +135,8 @@ ngCookingControllers.controller('RecipeNewCtrl', ['$scope', 'recipesService', 'c
 	
 	$scope.addRecipe = function(recipe) {
 	
+	  recipe.picture = $scope.recipePicture; //$scope.myFile;
+	
 	  /* Basic info */
 	  if (recipe.name === null || recipe.name === undefined
 	      || recipe.preparation === null || recipe.preparation === undefined)
@@ -342,3 +344,27 @@ ngCookingControllers.controller('CommunityDetailCtrl', ['$scope', 'communityServ
 		});
 	});
   }]);
+  
+ngCookingControllers.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+		scope: {
+			setFileData: "&"
+		},
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    //modelSetter(scope, element[0].files[0]);
+					scope.setFileData(
+						{
+							value: element[0].files[0]
+						}
+					);
+                });
+            });
+        }
+    };
+}]);

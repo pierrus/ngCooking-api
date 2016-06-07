@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using apis.Models;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace apis.Controllers
 {
@@ -13,10 +14,12 @@ namespace apis.Controllers
     public class RecettesController : Controller
     {
         NgContext _context;
+        private readonly IApplicationEnvironment _appEnvironment;
 
-        public RecettesController(NgContext context)
+        public RecettesController(NgContext context, IApplicationEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET api/recettes/5
@@ -51,15 +54,24 @@ namespace apis.Controllers
             }
         }
 
-        [HttpPut]
-        public void Put(Recette recipe)
+        [HttpPost]
+        public void Post(Recette recipe)
         {
             recipe.Id = recipe.Name.Replace(" ", "-").ToLower();
 
             if (_context.Recettes.Any(r => r.Id == recipe.Id))
                 recipe.Id = String.Format("{0}-{1}", recipe.Id, Guid.NewGuid());
 
+            
+            byte[] imageBinary = new byte[Request.Form.Files["rawPicture"].Length];
+
+            using (System.IO.Stream fileStream = Request.Form.Files["rawPicture"].OpenReadStream())
+                fileStream.Read(imageBinary, 0, imageBinary.Length);
+
             recipe.IsAvailable = true;
+            //Un nom est généré aléatoirement afin de ne pas avoir à se soucier des collisions avec d'autres images sur le file system
+            //Gère uniquement les jpg
+            recipe.Picture = String.Format("img/recettes/{0}.jpg", Guid.NewGuid().ToString());
 
             _context.Recettes.Add(recipe);
 
@@ -77,6 +89,11 @@ namespace apis.Controllers
             }
 
             _context.SaveChanges();
+
+            String pictureFullPath = String.Format("{0}/wwwroot/{1}", _appEnvironment.ApplicationBasePath, recipe.Picture);
+
+            using (System.IO.FileStream fs = new System.IO.FileStream(pictureFullPath, System.IO.FileMode.Create))
+                fs.Write(imageBinary, 0, imageBinary.Length);
         }
     }
 }

@@ -15,5 +15,9 @@ Deploy migration using "ef database update"
 Start Kestrel server from command line by typing "dnx web"
 
 TODO
+
 Error messages handling on recipe add, login
-Recipe's image handling on new recipe
+ - LoginCtrl / $scope.login
+ - RecipeNewCtrl / $scope.addRecipe
+Changer les PUT en POST pour les créations de recette et de commentaires
+Ajouter GRUNT pour la minification
