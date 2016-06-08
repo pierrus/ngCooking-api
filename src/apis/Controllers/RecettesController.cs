@@ -80,6 +80,9 @@ namespace apis.Controllers
             if (recipe.IngredientsRecettes == null)
                 recipe.IngredientsRecettes = new List<IngredientRecette>();
 
+            if (recipe.Ingredients != null && recipe.Ingredients.Count > 0)
+                recipe.Ingredients = recipe.Ingredients[0].Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
             foreach (String ingredientId in recipe.Ingredients)
             {
                 Ingredient ig = _context.Ingredients.Where(i => i.Id == ingredientId).FirstOrDefault();

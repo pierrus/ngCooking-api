@@ -98,6 +98,12 @@
 											<p class="ac nm mt2">
 												<button type="button" class="btn btn_big btn_color1" ng-click="login(user.email, user.password)"><span class="glyphicon glyphicon-ok"></span><span class="fwb uc">Valider</span></button>
 											</p>
+											<div class="col-xs-12" ng-show="loginFailed">
+												<p class="ac mt2 tb">
+													<span class="glyphicon glyphicon-exclamation-sign color2"></span>
+													<span>Woops ! L'authentification a échoué</span>
+												</p>
+											</div>
 										</form>
 									</div>
 									<button class="close popin-close" ng-click="hideLoginPopin()"><span class="glyphicon glyphicon-remove"></span></button>

@@ -17,6 +17,12 @@ Start Kestrel server from command line by typing "dnx web"
 TODO
 
 Error messages handling on recipe add, login
- - LoginCtrl / $scope.login
  - RecipeNewCtrl / $scope.addRecipe
-Ajouter GRUNT pour la minification
+Ajouter GRUNT pour la minification + création du package de livraison
+
+.NET VERSION
+
+.NET version Core RC1
+
+TO BE IMPROVED
+

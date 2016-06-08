@@ -273,16 +273,20 @@ ngCookingControllers.controller('LoginCtrl', ['$scope', 'communityService', 'rec
 			  $scope.displayLoginModal = false;
 			  $scope.loggedIn = true;
 			  $scope.memberId = status.member.data.Id;
+			  $scope.loginFailed = false;
 			}
 			else {
 			  $scope.loggedIn = false;
 			  $scope.memberId = null;
+			  $scope.loginFailed = true;
 			}
 			
 			$scope.$emit('authenticationStatusChange', status.loggedIn);
 		  });
 	   });
 	};
+
+	$scope.loginFailed = false;
 	
 	/* Login init */
 	communityService.getAuthenticationStatus().then(function(status){
