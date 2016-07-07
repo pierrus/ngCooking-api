@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using apis.Models;
-using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.AspNetCore.Hosting;
 
 namespace apis.Controllers
 {
@@ -14,9 +14,9 @@ namespace apis.Controllers
     public class RecettesController : Controller
     {
         NgContext _context;
-        private readonly IApplicationEnvironment _appEnvironment;
+        private readonly IHostingEnvironment _appEnvironment;
 
-        public RecettesController(NgContext context, IApplicationEnvironment appEnvironment)
+        public RecettesController(NgContext context, IHostingEnvironment appEnvironment)
         {
             _context = context;
             _appEnvironment = appEnvironment;
@@ -80,6 +80,7 @@ namespace apis.Controllers
             if (recipe.IngredientsRecettes == null)
                 recipe.IngredientsRecettes = new List<IngredientRecette>();
 
+            //Pas propre
             if (recipe.Ingredients != null && recipe.Ingredients.Count > 0)
                 recipe.Ingredients = recipe.Ingredients[0].Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
@@ -93,7 +94,7 @@ namespace apis.Controllers
 
             _context.SaveChanges();
 
-            String pictureFullPath = String.Format("{0}/wwwroot/{1}", _appEnvironment.ApplicationBasePath, recipe.Picture);
+            String pictureFullPath = String.Format("{0}/{1}", _appEnvironment.WebRootPath, recipe.Picture);
 
             using (System.IO.FileStream fs = new System.IO.FileStream(pictureFullPath, System.IO.FileMode.Create))
                 fs.Write(imageBinary, 0, imageBinary.Length);

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace apis
 {
@@ -18,7 +16,9 @@ namespace apis
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -29,24 +29,24 @@ namespace apis
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc()
-                .AddControllersAsServices(new[]
-                    {
-                        typeof(Controllers.ValuesController),
-                        typeof(Controllers.ImportController),
-                        typeof(Controllers.RecettesController),
-                        typeof(Controllers.IngredientsController),
-                        typeof(Controllers.CommunityController),
-                        typeof(Controllers.AuthenticateController),
-                        typeof(Controllers.CommentairesController)
-                    });
+            services.AddMvc().AddControllersAsServices();
+                //.AddControllersAsServices(new[]
+                //    {
+                //        typeof(Controllers.ValuesController),
+                //        typeof(Controllers.ImportController),
+                //        typeof(Controllers.RecettesController),
+                //        typeof(Controllers.IngredientsController),
+                //        typeof(Controllers.CommunityController),
+                //        typeof(Controllers.AuthenticateController),
+                //        typeof(Controllers.CommentairesController)
+                //    });
 
             services.AddTransient<IUserStore<Models.User>, UserStore<Models.User, IdentityRole<Int32>, Models.NgContext, Int32>>();
 
             services.AddTransient<IRoleStore<IdentityRole<Int32>>, RoleStore<IdentityRole<Int32>, Models.NgContext, Int32>>();
 
             services.AddEntityFramework()
-                .AddSqlServer()
+                //.AddSqlServer()
                 .AddDbContext<Models.NgContext>();
 
             services.AddIdentity<Models.User, IdentityRole<Int32>>(sa =>
@@ -54,12 +54,11 @@ namespace apis
                 sa.Password.RequireDigit = false;
                 sa.Password.RequireUppercase = false;
                 sa.Password.RequiredLength = 0;
-                sa.Password.RequireNonLetterOrDigit = false;
                 sa.Cookies.ApplicationCookie.LoginPath = "/App/Login";
                 sa.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(1);
             });
 
-            services.AddInstance<IConfigurationRoot>(Configuration);
+            services.AddTransient<IConfigurationRoot>(s => { return Configuration; });
 
             services.AddCors();
         }
@@ -69,8 +68,6 @@ namespace apis
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            app.UseIISPlatformHandler();
 
             app.UseCors(builder => builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin().Build());
 
@@ -82,8 +79,5 @@ namespace apis
 
             app.UseMvc();            
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

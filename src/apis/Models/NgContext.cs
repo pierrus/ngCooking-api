@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace apis.Models
 {
@@ -31,7 +32,7 @@ namespace apis.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            String connString = _configuration.Get<String>("Data:NgConnectionString");
+            String connString = _configuration.GetValue<String>("Data:NgConnectionString");
 
             optionsBuilder.UseSqlServer(connString);
 
@@ -44,6 +45,7 @@ namespace apis.Models
                 .HasKey(t => new { t.IngredientId, t.RecetteId });
 
             builder.Entity<Recette>()
+                .ForSqlServerToTable("recette")
                 .Ignore(r => r.Ingredients)
                 .HasOne(r => r.User)
                 .WithMany()
@@ -51,6 +53,7 @@ namespace apis.Models
                 .HasPrincipalKey(u => u.Id);
 
             builder.Entity<IngredientRecette>()
+                .ForSqlServerToTable("IngredientRecette")
                 .HasOne(ir => ir.Recette)
                 .WithMany(r => r.IngredientsRecettes)
                 .HasForeignKey(ir => ir.RecetteId)
@@ -63,6 +66,7 @@ namespace apis.Models
                 .HasPrincipalKey(i => i.Id);
 
             builder.Entity<Commentaire>()
+                .ForSqlServerToTable("Commentaire")
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserId);
@@ -77,6 +81,9 @@ namespace apis.Models
 
             builder.Entity<Recette>()
                 .Ignore(u => u.Calories);
+
+            builder.Entity<Ingredient>()
+                .ForSqlServerToTable("Ingredient");
 
             base.OnModelCreating(builder);
         }

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Security.Claims;
-using Microsoft.AspNet.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using apis.Models;
 
 namespace apis.Controllers
@@ -32,15 +29,15 @@ namespace apis.Controllers
         public IActionResult LoggedInStatus()
         {
             if (!User.Identity.IsAuthenticated)
-                return new HttpStatusCodeResult((int)System.Net.HttpStatusCode.Forbidden);
+                return new StatusCodeResult((int)System.Net.HttpStatusCode.Forbidden);
 
-            String userName = User.GetUserName();
-            String userId = User.GetUserId();
+            String userName = _userManager.GetUserName(User);
+            String userId = _userManager.GetUserId(User);
 
             User user = _context.Users.Where(u => u.UserName == userName).FirstOrDefault();
 
             if (user == null)
-                return new HttpStatusCodeResult((int)System.Net.HttpStatusCode.Unauthorized);
+                return new StatusCodeResult((int)System.Net.HttpStatusCode.Unauthorized);
 
             return new JsonResult(GetUser(user));
         }
@@ -50,10 +47,10 @@ namespace apis.Controllers
         {
             var result = await _signInManager.PasswordSignInAsync(email, password, true, false);
 
-            if (result == SignInResult.Success)
-                return new HttpStatusCodeResult(200);
+            if (result == Microsoft.AspNetCore.Identity.SignInResult.Success)
+                return new StatusCodeResult(200);
             else
-                return new HttpStatusCodeResult(401);
+                return new StatusCodeResult(401);
         }
 
         [HttpDelete]
@@ -61,7 +58,7 @@ namespace apis.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return new HttpStatusCodeResult(200);
+            return new StatusCodeResult(200);
         }
 
         private User GetUser(User user)
