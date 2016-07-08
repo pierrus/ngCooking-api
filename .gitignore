@@ -1,5 +1,5 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-src/apis
-src/obj
-node_modules
+src/apis/bin
+src/apis/obj
+**/node_modules
 **/*.user

@@ -1,0 +1,40 @@
+﻿<div class="content" id="content_users">
+	<h1 class="page-title">La communauté</h1>
+	
+	<section class="section">
+		<h2 class="title">~ Les meilleures cuistots ~</h2>
+		<div class="sort">
+			<p>
+				<span class="span-label">Trier par :</span>
+				<select name="" id="" ng-model="sortBy">
+					<option value="firstname">Ordre alphabétique (A->Z)</option>
+					<option value="-firstname">Ordre alphabétique (Z->A)</option>
+					<option value="-level">Les mieux notés d'abord</option>
+					<option value="level">Les moins bien notés d'abord</option>
+				</select>
+			</p>
+		</div>
+		<div class="users row">
+			<div class="col-xs-6 col-sm-3 user" ng-repeat="member in members | orderBy:sortBy">
+				<a href="#/member/{{member.id}}">
+					<img src="{{member.picture}}" alt="{{member.firstname}} {{member.surname}}">
+					<div class="text">
+						<p class="name">{{member.firstname}} {{member.surname}}</p>
+						<p class="level">
+							<span class="stars">
+								<span class="glyphicon glyphicon-star" ng-repeat="i in getNumber(member.level) track by $index"></span>
+							</span>
+							<span class="status">{{member.levelLabel}}</span>
+						</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row showmore">
+			<div class="col-xs-12">
+				<button type="button" class="btn btn_color1"><span class="glyphicon glyphicon-chevron-down"></span>Afficher d'avantage</button>
+			</div>
+		</div>
+	</section>
+
+</div>

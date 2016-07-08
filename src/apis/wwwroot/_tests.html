@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8" />
+<title>NgCooking</title>
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="c17 engineering" />
+<meta name="copyright" content="c17 engineering" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+<meta name="apple-mobile-web-app-title" content="c17 engineering, recettes de cuisine à partager">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<link rel="shortcut icon" href="img/favicon.png" />
+<link rel="image_src" href="img/favicon.png"/>
+<link rel="icon" type="image/png" href="img/favicon.png"/>
+
+<meta name="robots" content="noindex, nofollow" />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+
+<div id="wrapper">
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<a href="/" class="logo">
+						<img src="img/logo_header.png" alt="">
+					</a>
+					<div class="desc">
+						<p>Partagez vos meilleures recettes avec<br/>la communauté NgCooking</p>
+						<p><a class="link" href="home.html"><strong>245 recettes</strong> à découvrir !</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<nav id="nav">
+						<ul class="menu">
+							<li class="page_hom active">
+								<a href="home.html">Accueil</a>
+							</li>
+							<li class="page_rec">
+								<a href="recettes.html">Recettes</a>
+							</li>
+							<li class="page_ing">
+								<a href="ingredients.html">Ingredients</a>
+							</li>
+							<li class="page_com">
+								<a href="communaute.html">Communauté</a>
+							</li>
+						</ul>
+						<div class="account-area">
+							<button type="button" class="button connect" data-popin-open="connect_popin"><span class="icon"></span>Connexion</button>
+							<a href="communaute_details.html" class="button account"><span class="icon"></span>Mon profil</a>
+							<button type="button" class="button deconnect"><span class="glyphicon glyphicon-off"></span>Deconnexion</button>
+						</div>
+					</nav>
+				</div>
+				<div class="col-xs-9">
+					<div class="content" id="content_home">
+
+						<h1 class="page-title">Tests html/css</h1>
+
+						<section class="section">
+							<h2 class="title">~ Some weird stuff for you backend devs ~</h2>
+							<div class="row mb2">
+
+								<div class="col-xs-12">
+										<header>
+											<nav>
+											</nav>
+										</header>
+										<main> <!-- contenu principal de la page -->
+											<section> <!-- vous permettra de définir une section/partie de votre page. La plupart des autres balises sémantiques jouent leur rôle dans la section qui les contient. -->
+											</section>
+											<article> <!-- vous permettra de définir un article/post/commentaire ou tout autre contenu important de la page. -->
+											    <figure><!-- image accompagnée de sa légande -->
+											        <img src="img/content/img1.jpg" alt="image 1" />
+											        <figcaption>Lookie Mah! An Image!</figcaption> <!-- défini la légende de l’image à l’intérieur de <figure> -->
+											    </figure>
+											    <small>My Smallprint</small>
+											    <mark>My Highlighted text</mark>
+											</article>
+											<aside> <!-- vous permettra de définir un texte qui se rapporte au sujet de la page/section, mais qui ne fait pas partie du contenu en lui-même. une sorte d'apparté ou d'info supplémentaire -->
+											</aside>
+										</main>
+
+										<footer>
+										</footer>
+
+										<!--
+										Et pour les vieux navigateurs?
+
+										La question des vieux navigateurs est assez importante. En effet, comment les “vieux” navigateurs vont-il réagir face à ces nouvelles balises inconnus? En fait, seul IE posera problème (comme c’est étonnant…), mais il existe heureusement un solution simple pour palier à ce problème.
+
+										En effet, il suffit de créer les balises en javascript pour pouvoir les utiliser après dans votre HTML. Un simple document.createElement(‘header’); vous autorisera à utiliser la balise <header> dans votre HTML et à utiliser la CSS dessus. Il est donc possible dès maintenant d’utiliser les balises d’HTML5 dans votre site sans risquer de gros problèmes!
+
+										Certaines librairies comme html5shiv le font très bien. (a note que html5shiv est contenu dans modernizr.custom.53917)
+										-->
+								</div>
+							</div>
+
+							<div class="row mb2">
+
+								<div class="col-xs-12">
+									<p class="fdbk">Blabla blablabla bla blabla blablablabla bla blabla blablablabla. Blabla blablabla bla blabla blablablabla bla blabla blablablabla blablabla bla blabla blablablabla bla blabla blablablabla blablabla bla blabla blablablabla bla blabla blablablabla. Blabla blablabla bla blabla blablablabla. Blabla blablabla bla blabla blablablabla, Blabla blablabla bla blabla blablablabla Blabla blablabla bla blabla blablablabla</p>
+									<span class="page_coord">first span</span><br/>
+									<span class="client_coord">last span</span>
+									<br/><br/>
+
+									<div class="test">test</div>
+									<p class="test">test bis</p>
+									<br/>
+									<p>un paragraphe classique</p>
+									<p>un paragraphe classique <span>avec un span dedans</span></p>
+									<p>un span classique <span>avec un paragraphe dedans</span></p>
+
+									<p>voici du text <span>et ici une balise span</span> <a href="#" target="_blank">puis un lien</a> <b>bold</b> <strong>strong</strong></p>
+									<span>un span de base</span>
+									<span>un span <em>avec du em à l'interieur</em></span>
+									<br/>
+									<a href="#">Un lien tout seul</a> et du texte dans le vide <em>puis du texte ne italique</em>
+									<br/>
+									<div>une div <p>avec un paragraphe dedans</p></div>
+									<br/>
+									<div>une div <span>avec du span dedans</span></div>
+									<br/>
+									<div>une div <em>avec un em dedans</em></div>
+									<br/>
+
+									<section>du texte section <div>avec du texte div <p>avec du p <span>et du span</span></p></div><p>et du p dans la section</p></section>
+									<div><a href="#">un petit lien</a><p>un paragraphe <span>et du span</span></p><section>une section <p>avec un paragraphe <a href="#">et un petit lien</a></p><div>une div <p>avec un autre paragraphe dedans</p></div></section></div>
+									<br/>
+
+									<ul>
+										<li>du texte sans balise</li>
+										<li><a href="#">un lien</a></li>
+										<li><p>du paragraphe</p></li>
+										<li><span>du span</span></li>
+										<li><div><p>du paragraphe</p></div></li>
+										<li><div><span>du span</span></div></li>
+									</ul>
+									<ol>
+										<li>du exte sans balise</li>
+										<li><a href="#">un lien</a></li>
+										<li><p>du paragraphe</p></li>
+										<li><span>du span</span></li>
+										<li><div><p>du paragraphe</p></div></li>
+										<li><div><span>du span</span></div></li>
+									</ol>
+
+									<table class="wide">
+										<thead>
+											<tr>
+												<td>texte sans balise</td>
+												<td><a href="#">un lien</a></td>
+												<td><p class="nm">une paragraphe</p></td>
+												<td><span>un span</span></td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>texte sans balise</th>
+												<th><a href="#">un lien</a></th>
+												<th><p class="nm">une paragraphe</p></th>
+												<th><span>un span</span></th>
+											</tr>
+											<tr>
+												<td><img src="img/content/img1.jpg" alt="image 1" width="90" /></td>
+												<td><a href="#">un lien</a></td>
+												<td><p class="nm">une paragraphe</p></td>
+												<td><span>un span</span></td>
+											</tr>
+											<tr>
+												<td>texte sans balise</td>
+												<td><a href="#">un lien</a></td>
+												<td><p class="nm">une paragraphe</p></td>
+												<td><span>un span</span></td>
+											</tr>
+											<tr>
+												<td>
+													<input type="checkbox" id="ttt" name="" value="">
+													<label for="ttt">Check</label>
+												</td>
+												<td><a href="#">un lien</a></td>
+												<td><p class="nm">une paragraphe</p></td>
+												<td><span>un span</span></td>
+											</tr>
+											<tr>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+												<td>&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<br><br>
+
+									<div class="table table-wide">
+										<div class="table-head">
+											<div class="table-cell">texte sans balise</div>
+											<div class="table-cell"><a href="#">un lien</a></div>
+											<div class="table-cell"><p class="nm">une paragraphe</p></div>
+											<div class="table-cell"><span>un span</span></div>
+										</div>
+										<div class="table-row">
+											<div class="table-cell"><img src="img/content/img1.jpg" alt="image 1" width="90" /></div>
+											<div class="table-cell"><a href="#">un lien</a></div>
+											<div class="table-cell"><p class="nm">une paragraphe</p></div>
+											<div class="table-cell"><span>un span</span></div>
+										</div>
+										<div class="table-row">
+											<div class="table-cell">texte sans balise</div>
+											<div class="table-cell"><a href="#">un lien</a></div>
+											<div class="table-cell"><p class="nm">une paragraphe</p></div>
+											<div class="table-cell"><span>un span</span></div>
+										</div>
+										<div class="table-row">
+											<div class="table-cell">
+												<input type="checkbox" id="ttt2" name="" value="">
+												<label for="ttt2">Check</label>
+											</div>
+											<div class="table-cell"><a href="#">un lien</a></div>
+											<div class="table-cell"><p class="nm">une paragraphe</p></div>
+											<div class="table-cell"><span>un span</span></div>
+										</div>
+										<div class="table-row">
+											<div class="table-cell">&nbsp;</div>
+											<div class="table-cell">&nbsp;</div>
+											<div class="table-cell">&nbsp;</div>
+											<div class="table-cell">&nbsp;</div>
+										</div>
+									</div>
+
+									<h1>Titre H1</h1>
+									<h2>Titre H2</h2>
+									<h3>Titre H3</h3>
+									<h4>Titre H4</h4>
+									<h5>Titre H5</h5>
+									<h6>Titre H6</h6>
+									<section>
+									<h1>Titre H1</h1>
+									<h2>Titre H2</h2>
+									<h3>Titre H3</h3>
+									<h4>Titre H4</h4>
+									<h5>Titre H5</h5>
+									<h6>Titre H6</h6>
+									</section>
+									<br/>
+
+									<img src="img/content/img1.jpg" alt="image 1" class="fl" />
+									<img src="img/content/img1.jpg" alt="image 1" class="fl" />
+									<div class="clear"></div>
+									<a href="#" class="fl"><img src="img/content/img1.jpg" alt="image 1" class="fl" /></a>
+									<img src="img/content/img1.jpg" alt="image 1" class="fl" />
+									<div class="clear"></div>
+									<a href="#"><img src="img/content/img1.jpg" alt="image 1" class="fl" /></a>
+									<img src="img/content/img1.jpg" alt="image 1" />
+
+									<br/><br/>
+									<input class="btn fl mr0" type="submit" value="un bouton" />
+									<input class="btn btn_black fl mr0" type="button" value="un bouton" />
+									<button class="btn btn_grey1 fl mr0" type="button">un bouton</button>
+									<button class="btn btn_grey2 fl mr0" type="submit">un bouton</button>
+									<a class="btn btn_color1 fl mr0" href="#">un bouton</a>
+
+									<br/><br/><br/><br/>
+									<input class="btn" type="submit" value="un bouton" />
+									<input class="btn btn_color1" type="button" value="un bouton" />
+									<button class="btn btn_color2" type="button">un bouton</button>
+									<button class="btn btn_color3" type="submit">un bouton</button>
+									<a class="btn btn_color1" href="#">un bouton</a>
+
+									<br/><br/><br/>
+									<input class="fl mr0" type="file" value="Parcourir les fichiers" />
+									<input type="radio" class="fl" name="rad" />
+									<input type="radio" class="fl" name="rad" />
+									<input type="checkbox" id="ttt3" class="fl" />
+									<label for="ttt3" class="fl">Check</label>
+									<input type="text" class="fl" name="txt" value="the value" />
+									<input type="email" class="fl" name="email" placeholder="placeholder" />
+									<select class="fl" multiple>
+										<option value="o1">option 1</option>
+										<option value="o2">option 2</option>
+										<option value="o3">option 3</option>
+									</select>
+									<select class="fl">
+										<option value="o1">option 1</option>
+										<option value="o2">option 2</option>
+										<option value="o3">option 3</option>
+									</select>
+									<textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+									cillum dolore eu fugiat nulla pariatur.</textarea>
+
+									<br/>
+
+									<form>
+									<input class="fl mr0" type="file" value="Parcourir les fichiers" />
+									<input type="radio" class="fl" name="rad" required />
+									<input type="radio" class="fl" name="rad" required />
+									<input type="checkbox" id="ttt4" class="fl" required />
+									<label for="ttt4" class="fl">Check</label>
+									<input type="text" class="fl" name="txt" value="the value" required />
+									<input type="email" class="fl" name="email" placeholder="placeholder" required />
+									<input type="submit" class="fl" value="Submit" />
+									<select name="" multiple>
+										<option value="o1">option 1</option>
+										<option value="o2">option 2</option>
+										<option value="o3">option 3</option>
+									</select>
+									<textarea>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+									cillum dolore eu fugiat nulla pariatur.</textarea>
+									</form>
+
+									<br/>
+
+									<form>
+									<input class="mr0" type="file" value="Parcourir les fichiers" />
+									<input type="radio" name="rad" required />
+									<input type="radio" name="rad" required />
+									<input type="checkbox" id="ttt4" required />
+									<label for="ttt4">Check</label>
+									<input type="text" name="txt" value="the value" required />
+									<input type="email" name="email" placeholder="placeholder" required />
+									<input type="submit" value="Submit" />
+									<select name="" multiple>
+										<option value="o1">option 1</option>
+										<option value="o2">option 2</option>
+										<option value="o3">option 3</option>
+									</select>
+									<select>
+										<option value="o1">option 1</option>
+										<option value="o2">option 2</option>
+										<option value="o3">option 3</option>
+									</select>
+									<textarea class="resizable wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+									cillum dolore eu fugiat nulla pariatur.</textarea>
+									</form>
+								</div>
+							</div>
+
+							<div class="row mb2">
+								<div class="col-xs-12">
+									<div id="glyphicons-tests" style="font-size:1.6em; margin-top:1em;">
+									    <span class="glyphicon glyphicon-asterisk"></span>
+									    <span class="glyphicon glyphicon-plus"></span>
+									    <span class="glyphicon glyphicon-euro"></span>
+									    <span class="glyphicon glyphicon-eur"></span>
+									    <span class="glyphicon glyphicon-minus"></span>
+									    <span class="glyphicon glyphicon-cloud"></span>
+									    <span class="glyphicon glyphicon-envelope"></span>
+									    <span class="glyphicon glyphicon-pencil"></span>
+									    <span class="glyphicon glyphicon-glass"></span>
+									    <span class="glyphicon glyphicon-music"></span>
+									    <span class="glyphicon glyphicon-search"></span>
+									    <span class="glyphicon glyphicon-heart"></span>
+									    <span class="glyphicon glyphicon-star"></span>
+									    <span class="glyphicon glyphicon-star-empty"></span>
+									    <span class="glyphicon glyphicon-user"></span>
+									    <span class="glyphicon glyphicon-film"></span>
+									    <span class="glyphicon glyphicon-th-large"></span>
+									    <span class="glyphicon glyphicon-th"></span>
+									    <span class="glyphicon glyphicon-th-list"></span>
+									    <span class="glyphicon glyphicon-ok"></span>
+									    <span class="glyphicon glyphicon-remove"></span>
+									    <span class="glyphicon glyphicon-zoom-in"></span>
+									    <span class="glyphicon glyphicon-zoom-out"></span>
+									    <span class="glyphicon glyphicon-off"></span>
+									    <span class="glyphicon glyphicon-signal"></span>
+									    <span class="glyphicon glyphicon-cog"></span>
+									    <span class="glyphicon glyphicon-trash"></span>
+									    <span class="glyphicon glyphicon-home"></span>
+									    <span class="glyphicon glyphicon-file"></span>
+									    <span class="glyphicon glyphicon-time"></span>
+									    <span class="glyphicon glyphicon-road"></span>
+									    <span class="glyphicon glyphicon-download-alt"></span>
+									    <span class="glyphicon glyphicon-download"></span>
+									    <span class="glyphicon glyphicon-upload"></span>
+									    <span class="glyphicon glyphicon-inbox"></span>
+									    <span class="glyphicon glyphicon-play-circle"></span>
+									    <span class="glyphicon glyphicon-repeat"></span>
+									    <span class="glyphicon glyphicon-refresh"></span>
+									    <span class="glyphicon glyphicon-list-alt"></span>
+									    <span class="glyphicon glyphicon-lock"></span>
+									    <span class="glyphicon glyphicon-flag"></span>
+									    <span class="glyphicon glyphicon-headphones"></span>
+									    <span class="glyphicon glyphicon-volume-off"></span>
+									    <span class="glyphicon glyphicon-volume-down"></span>
+									    <span class="glyphicon glyphicon-volume-up"></span>
+									    <span class="glyphicon glyphicon-qrcode"></span>
+									    <span class="glyphicon glyphicon-barcode"></span>
+									    <span class="glyphicon glyphicon-tag"></span>
+									    <span class="glyphicon glyphicon-tags"></span>
+									    <span class="glyphicon glyphicon-book"></span>
+									    <span class="glyphicon glyphicon-bookmark"></span>
+									    <span class="glyphicon glyphicon-print"></span>
+									    <span class="glyphicon glyphicon-camera"></span>
+									    <span class="glyphicon glyphicon-font"></span>
+									    <span class="glyphicon glyphicon-bold"></span>
+									    <span class="glyphicon glyphicon-italic"></span>
+									    <span class="glyphicon glyphicon-text-height"></span>
+									    <span class="glyphicon glyphicon-text-width"></span>
+									    <span class="glyphicon glyphicon-align-left"></span>
+									    <span class="glyphicon glyphicon-align-center"></span>
+									    <span class="glyphicon glyphicon-align-right"></span>
+									    <span class="glyphicon glyphicon-align-justify"></span>
+									    <span class="glyphicon glyphicon-list"></span>
+									    <span class="glyphicon glyphicon-indent-left"></span>
+									    <span class="glyphicon glyphicon-indent-right"></span>
+									    <span class="glyphicon glyphicon-facetime-video"></span>
+									    <span class="glyphicon glyphicon-picture"></span>
+									    <span class="glyphicon glyphicon-map-marker"></span>
+									    <span class="glyphicon glyphicon-adjust"></span>
+									    <span class="glyphicon glyphicon-tint"></span>
+									    <span class="glyphicon glyphicon-edit"></span>
+									    <span class="glyphicon glyphicon-share"></span>
+									    <span class="glyphicon glyphicon-check"></span>
+									    <span class="glyphicon glyphicon-move"></span>
+									    <span class="glyphicon glyphicon-step-backward"></span>
+									    <span class="glyphicon glyphicon-fast-backward"></span>
+									    <span class="glyphicon glyphicon-backward"></span>
+									    <span class="glyphicon glyphicon-play"></span>
+									    <span class="glyphicon glyphicon-pause"></span>
+									    <span class="glyphicon glyphicon-stop"></span>
+									    <span class="glyphicon glyphicon-forward"></span>
+									    <span class="glyphicon glyphicon-fast-forward"></span>
+									    <span class="glyphicon glyphicon-step-forward"></span>
+									    <span class="glyphicon glyphicon-eject"></span>
+									    <span class="glyphicon glyphicon-chevron-left"></span>
+									    <span class="glyphicon glyphicon-chevron-right"></span>
+									    <span class="glyphicon glyphicon-plus-sign"></span>
+									    <span class="glyphicon glyphicon-minus-sign"></span>
+									    <span class="glyphicon glyphicon-remove-sign"></span>
+									    <span class="glyphicon glyphicon-ok-sign"></span>
+									    <span class="glyphicon glyphicon-question-sign"></span>
+									    <span class="glyphicon glyphicon-info-sign"></span>
+									    <span class="glyphicon glyphicon-screenshot"></span>
+									    <span class="glyphicon glyphicon-remove-circle"></span>
+									    <span class="glyphicon glyphicon-ok-circle"></span>
+									    <span class="glyphicon glyphicon-ban-circle"></span>
+									    <span class="glyphicon glyphicon-arrow-left"></span>
+									    <span class="glyphicon glyphicon-arrow-right"></span>
+									    <span class="glyphicon glyphicon-arrow-up"></span>
+									    <span class="glyphicon glyphicon-arrow-down"></span>
+									    <span class="glyphicon glyphicon-share-alt"></span>
+									    <span class="glyphicon glyphicon-resize-full"></span>
+									    <span class="glyphicon glyphicon-resize-small"></span>
+									    <span class="glyphicon glyphicon-exclamation-sign"></span>
+									    <span class="glyphicon glyphicon-gift"></span>
+									    <span class="glyphicon glyphicon-leaf"></span>
+									    <span class="glyphicon glyphicon-fire"></span>
+									    <span class="glyphicon glyphicon-eye-open"></span>
+									    <span class="glyphicon glyphicon-eye-close"></span>
+									    <span class="glyphicon glyphicon-warning-sign"></span>
+									    <span class="glyphicon glyphicon-plane"></span>
+									    <span class="glyphicon glyphicon-calendar"></span>
+									    <span class="glyphicon glyphicon-random"></span>
+									    <span class="glyphicon glyphicon-comment"></span>
+									    <span class="glyphicon glyphicon-magnet"></span>
+									    <span class="glyphicon glyphicon-chevron-up"></span>
+									    <span class="glyphicon glyphicon-chevron-down"></span>
+									    <span class="glyphicon glyphicon-retweet"></span>
+									    <span class="glyphicon glyphicon-shopping-cart"></span>
+									    <span class="glyphicon glyphicon-folder-close"></span>
+									    <span class="glyphicon glyphicon-folder-open"></span>
+									    <span class="glyphicon glyphicon-resize-vertical"></span>
+									    <span class="glyphicon glyphicon-resize-horizontal"></span>
+									    <span class="glyphicon glyphicon-hdd"></span>
+									    <span class="glyphicon glyphicon-bullhorn"></span>
+									    <span class="glyphicon glyphicon-bell"></span>
+									    <span class="glyphicon glyphicon-certificate"></span>
+									    <span class="glyphicon glyphicon-thumbs-up"></span>
+									    <span class="glyphicon glyphicon-thumbs-down"></span>
+									    <span class="glyphicon glyphicon-hand-right"></span>
+									    <span class="glyphicon glyphicon-hand-left"></span>
+									    <span class="glyphicon glyphicon-hand-up"></span>
+									    <span class="glyphicon glyphicon-hand-down"></span>
+									    <span class="glyphicon glyphicon-circle-arrow-right"></span>
+									    <span class="glyphicon glyphicon-circle-arrow-left"></span>
+									    <span class="glyphicon glyphicon-circle-arrow-up"></span>
+									    <span class="glyphicon glyphicon-circle-arrow-down"></span>
+									    <span class="glyphicon glyphicon-globe"></span>
+									    <span class="glyphicon glyphicon-wrench"></span>
+									    <span class="glyphicon glyphicon-tasks"></span>
+									    <span class="glyphicon glyphicon-filter"></span>
+									    <span class="glyphicon glyphicon-briefcase"></span>
+									    <span class="glyphicon glyphicon-fullscreen"></span>
+									    <span class="glyphicon glyphicon-dashboard"></span>
+									    <span class="glyphicon glyphicon-paperclip"></span>
+									    <span class="glyphicon glyphicon-heart-empty"></span>
+									    <span class="glyphicon glyphicon-link"></span>
+									    <span class="glyphicon glyphicon-phone"></span>
+									    <span class="glyphicon glyphicon-pushpin"></span>
+									    <span class="glyphicon glyphicon-usd"></span>
+									    <span class="glyphicon glyphicon-gbp"></span>
+									    <span class="glyphicon glyphicon-sort"></span>
+									    <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+									    <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
+									    <span class="glyphicon glyphicon-sort-by-order"></span>
+									    <span class="glyphicon glyphicon-sort-by-order-alt"></span>
+									    <span class="glyphicon glyphicon-sort-by-attributes"></span>
+									    <span class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+									    <span class="glyphicon glyphicon-unchecked"></span>
+									    <span class="glyphicon glyphicon-expand"></span>
+									    <span class="glyphicon glyphicon-collapse-down"></span>
+									    <span class="glyphicon glyphicon-collapse-up"></span>
+									    <span class="glyphicon glyphicon-log-in"></span>
+									    <span class="glyphicon glyphicon-flash"></span>
+									    <span class="glyphicon glyphicon-log-out"></span>
+									    <span class="glyphicon glyphicon-new-window"></span>
+									    <span class="glyphicon glyphicon-record"></span>
+									    <span class="glyphicon glyphicon-save"></span>
+									    <span class="glyphicon glyphicon-open"></span>
+									    <span class="glyphicon glyphicon-saved"></span>
+									    <span class="glyphicon glyphicon-import"></span>
+									    <span class="glyphicon glyphicon-export"></span>
+									    <span class="glyphicon glyphicon-send"></span>
+									    <span class="glyphicon glyphicon-floppy-disk"></span>
+									    <span class="glyphicon glyphicon-floppy-saved"></span>
+									    <span class="glyphicon glyphicon-floppy-remove"></span>
+									    <span class="glyphicon glyphicon-floppy-save"></span>
+									    <span class="glyphicon glyphicon-floppy-open"></span>
+									    <span class="glyphicon glyphicon-credit-card"></span>
+									    <span class="glyphicon glyphicon-transfer"></span>
+									    <span class="glyphicon glyphicon-cutlery"></span>
+									    <span class="glyphicon glyphicon-header"></span>
+									    <span class="glyphicon glyphicon-compressed"></span>
+									    <span class="glyphicon glyphicon-earphone"></span>
+									    <span class="glyphicon glyphicon-phone-alt"></span>
+									    <span class="glyphicon glyphicon-tower"></span>
+									    <span class="glyphicon glyphicon-stats"></span>
+									    <span class="glyphicon glyphicon-sd-video"></span>
+									    <span class="glyphicon glyphicon-hd-video"></span>
+									    <span class="glyphicon glyphicon-subtitles"></span>
+									    <span class="glyphicon glyphicon-sound-stereo"></span>
+									    <span class="glyphicon glyphicon-sound-dolby"></span>
+									    <span class="glyphicon glyphicon-sound-5-1"></span>
+									    <span class="glyphicon glyphicon-sound-6-1"></span>
+									    <span class="glyphicon glyphicon-sound-7-1"></span>
+									    <span class="glyphicon glyphicon-copyright-mark"></span>
+									    <span class="glyphicon glyphicon-registration-mark"></span>
+									    <span class="glyphicon glyphicon-cloud-download"></span>
+									    <span class="glyphicon glyphicon-cloud-upload"></span>
+									    <span class="glyphicon glyphicon-tree-conifer"></span>
+									    <span class="glyphicon glyphicon-tree-deciduous"></span>
+
+										<span class="glyphicon glyphicon-cd"></span>
+										<span class="glyphicon glyphicon-save-file"></span>
+										<span class="glyphicon glyphicon-open-file"></span>
+										<span class="glyphicon glyphicon-level-up"></span>
+										<span class="glyphicon glyphicon-copy"></span>
+										<span class="glyphicon glyphicon-paste"></span>
+										<span class="glyphicon glyphicon-alert"></span>
+										<span class="glyphicon glyphicon-equalizer"></span>
+										<span class="glyphicon glyphicon-king"></span>
+										<span class="glyphicon glyphicon-queen"></span>
+										<span class="glyphicon glyphicon-pawn"></span>
+										<span class="glyphicon glyphicon-bishop"></span>
+										<span class="glyphicon glyphicon-knight"></span>
+										<span class="glyphicon glyphicon-baby-formula"></span>
+										<span class="glyphicon glyphicon-tent"></span>
+										<span class="glyphicon glyphicon-blackboard"></span>
+										<span class="glyphicon glyphicon-bed"></span>
+										<span class="glyphicon glyphicon-apple"></span>
+										<span class="glyphicon glyphicon-erase"></span>
+										<span class="glyphicon glyphicon-hourglass"></span>
+										<span class="glyphicon glyphicon-lamp"></span>
+										<span class="glyphicon glyphicon-duplicate"></span>
+										<span class="glyphicon glyphicon-piggy-bank"></span>
+										<span class="glyphicon glyphicon-scissors"></span>
+										<span class="glyphicon glyphicon-bitcoin"></span>
+										<span class="glyphicon glyphicon-btc"></span>
+										<span class="glyphicon glyphicon-xbt"></span>
+										<span class="glyphicon glyphicon-yen"></span>
+										<span class="glyphicon glyphicon-jpy"></span>
+										<span class="glyphicon glyphicon-ruble"></span>
+										<span class="glyphicon glyphicon-rub"></span>
+										<span class="glyphicon glyphicon-scale"></span>
+										<span class="glyphicon glyphicon-ice-lolly"></span>
+										<span class="glyphicon glyphicon-ice-lolly-tasted"></span>
+										<span class="glyphicon glyphicon-education"></span>
+										<span class="glyphicon glyphicon-option-horizontal"></span>
+										<span class="glyphicon glyphicon-option-vertical"></span>
+										<span class="glyphicon glyphicon-menu-hamburger"></span>
+										<span class="glyphicon glyphicon-modal-window"></span>
+										<span class="glyphicon glyphicon-oil"></span>
+										<span class="glyphicon glyphicon-grain"></span>
+										<span class="glyphicon glyphicon-sunglasses"></span>
+										<span class="glyphicon glyphicon-text-size"></span>
+										<span class="glyphicon glyphicon-text-color"></span>
+										<span class="glyphicon glyphicon-text-background"></span>
+										<span class="glyphicon glyphicon-object-align-top"></span>
+										<span class="glyphicon glyphicon-object-align-bottom"></span>
+										<span class="glyphicon glyphicon-object-align-horizontal"></span>
+										<span class="glyphicon glyphicon-object-align-left"></span>
+										<span class="glyphicon glyphicon-object-align-vertical"></span>
+										<span class="glyphicon glyphicon-object-align-right"></span>
+										<span class="glyphicon glyphicon-triangle-right"></span>
+										<span class="glyphicon glyphicon-triangle-left"></span>
+										<span class="glyphicon glyphicon-triangle-bottom"></span>
+										<span class="glyphicon glyphicon-triangle-top"></span>
+										<span class="glyphicon glyphicon-console"></span>
+										<span class="glyphicon glyphicon-superscript"></span>
+										<span class="glyphicon glyphicon-subscript"></span>
+										<span class="glyphicon glyphicon-menu-left"></span>
+										<span class="glyphicon glyphicon-menu-right"></span>
+										<span class="glyphicon glyphicon-menu-down"></span>
+										<span class="glyphicon glyphicon-menu-up"></span>
+										
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer id="footer">
+		<div class="container">
+			<div class="row cuisto-img-wrap">
+				<div class="col-xs-3">
+					<div class="cuisto-img"></div>
+				</div>
+				<div class="col-xs-9">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse optio repellat temporibus molestiae ducimus quibusdam eum maiores voluptatum sapiente reprehenderit. Est, modi, tenetur. Tempora perferendis eveniet unde numquam cupiditate nam?</p>
+					<div class="hr"></div>
+					<p class="copyright">copyright @ngcooking 2015-2016</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+</div>
+
+<div class="popin" data-popin="connect_popin">
+	<div class="popin-content">
+		<div class="popin-scroll">
+			<p class="popin-title">Connexion</p>
+			<form action="" novalidate>
+				<p>
+					<label for="co_user" class="fwb">Identifiant (email)</label>
+					<input id="co_user" class="wide" type="text" />
+				</p>
+				<p>
+					<label for="co_pwd" class="fwb">Mot de passe</label>
+					<input id="co_pwd" class="wide" type="text" />
+				</p>
+				<p class="ac nm mt2">
+					<button type="button" class="btn btn_big btn_color1"><span class="glyphicon glyphicon-ok"></span><span class="fwb uc">Valider</span></button>
+				</p>
+			</form>
+		</div>
+		<button class="close popin-close"><span class="glyphicon glyphicon-remove"></span></button>
+	</div>
+	<div class="popin-backlayer"></div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("[data-popin-open]").click(function(){
+			var popin = $(this).attr("data-popin-open");
+			$("[data-popin='"+popin+"']").addClass("displayed");
+		});
+		$("[data-popin] .popin-backlayer, [data-popin] .popin-close").click(function(){
+			$(this).parents(".popin").removeClass("displayed");
+		});
+	});
+</script>
+
+</body>
+</html>
