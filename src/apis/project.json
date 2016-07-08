@@ -62,6 +62,12 @@
       "Areas/**/Views",
       "appsettings.json",
       "web.config"
+    ],
+    "exclude": [
+      "wwwroot/node_modules",
+      "wwwroot/package.json",
+      "wwwroot/bower.json",
+      "wwwroot/test"
     ]
   },
 

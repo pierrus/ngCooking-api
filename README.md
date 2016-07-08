@@ -11,7 +11,7 @@ USER GUIDE
 
 - Install .NET Core 1.0 SDK and CLI
 - Check connectionstring in appsettings.json
-- Deploy migration using "ef database update"
+- Deploy migration using "dotnet ef database update"
 - Start Kestrel server from command line by typing "dotnet run"
 
 Project was migrated from RC1 to 1.0 on 07/07/16
