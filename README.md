@@ -20,6 +20,8 @@ TODO
 
 - Ajouter GRUNT pour la minification + création du package de livraison
 - Quelques bugs identifiés
+- J'ai peur qu'il faille refactoriser le NgContext car compliqué de mocker les DBSET. Il faudra peut-être passer par le pattern repository, qui lui-même utilisera le NgContext
+  Cela consistera à passer par des méthodes plus spécialisés (genre GetRecetteById) plutôt que par du LINQ directement dans le contrôleur
 
 .NET VERSION
 

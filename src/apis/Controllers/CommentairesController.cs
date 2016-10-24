@@ -10,19 +10,17 @@ namespace apis.Controllers
     [Route("api/[controller]")]
     public class CommentairesController
     {
-        NgContext _context;
+        IRepository<Commentaire> _commentairesRepository;
 
-        public CommentairesController(NgContext context)
+        public CommentairesController(IRepository<Commentaire> commentairesRepository)
         {
-            _context = context;
+            _commentairesRepository = commentairesRepository;
         }
 
         [HttpPost]
         public void Post(Commentaire comment)
         {
-            _context.Commentaires.Add(comment);
-
-            _context.SaveChanges();
+            _commentairesRepository.Add(comment);
         }
     }
 }

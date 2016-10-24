@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using apis.Models;
 
 namespace apis
 {
@@ -20,6 +21,7 @@ namespace apis
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -28,25 +30,17 @@ namespace apis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddMvc().AddControllersAsServices();
-                //.AddControllersAsServices(new[]
-                //    {
-                //        typeof(Controllers.ValuesController),
-                //        typeof(Controllers.ImportController),
-                //        typeof(Controllers.RecettesController),
-                //        typeof(Controllers.IngredientsController),
-                //        typeof(Controllers.CommunityController),
-                //        typeof(Controllers.AuthenticateController),
-                //        typeof(Controllers.CommentairesController)
-                //    });
 
             services.AddTransient<IUserStore<Models.User>, UserStore<Models.User, IdentityRole<Int32>, Models.NgContext, Int32>>();
 
             services.AddTransient<IRoleStore<IdentityRole<Int32>>, RoleStore<IdentityRole<Int32>, Models.NgContext, Int32>>();
 
+            services.AddTransient<IRepository<Recette>, RecetteRepository>();
+
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+
             services.AddEntityFramework()
-                //.AddSqlServer()
                 .AddDbContext<Models.NgContext>();
 
             services.AddIdentity<Models.User, IdentityRole<Int32>>(sa =>

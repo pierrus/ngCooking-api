@@ -12,11 +12,11 @@ namespace apis.Controllers
     [Route("api/[controller]")]
     public class CommunityController : Controller
     {
-        apis.Models.NgContext _context;
+        IRepository<User> _communityRepository;
 
-        public CommunityController(NgContext context)
+        public CommunityController(IRepository<User> communityRepository)
         {
-            _context = context;
+            _communityRepository = communityRepository;
         }
 
         // GET: /<controller>/
@@ -29,7 +29,7 @@ namespace apis.Controllers
         [HttpGet]
         public IEnumerable<Models.User> Get()
         {
-            var users = _context.Users;
+            var users = _communityRepository.Get();
 
             return users.Select(u => GetUser(u)).ToList();
         }
@@ -38,7 +38,7 @@ namespace apis.Controllers
         [HttpGet("{id}")]
         public Models.User Get(Int32 id)
         {
-            var user = _context.Users.Where(u => u.Id == id)
+            var user = _communityRepository.Get().Where(u => u.Id == id)
                 .FirstOrDefault();
 
             return GetUser(user);

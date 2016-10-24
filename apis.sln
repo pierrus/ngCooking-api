@@ -1,16 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C14FF30-89E4-4361-B0CD-08540B0E2E58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FBEDA0B-3D56-41C6-8B94-D5E417007BDD}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		gruntfile.js = gruntfile.js
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "apis", "src\apis\apis.xproj", "{A2878F59-144E-43A2-9A61-C0705DE6916D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "apis.test", "src\apis.test\apis.test.xproj", "{02E5C402-E1C2-41D5-9AB2-6695A11F49E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,11 +25,16 @@ Global
 		{A2878F59-144E-43A2-9A61-C0705DE6916D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2878F59-144E-43A2-9A61-C0705DE6916D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2878F59-144E-43A2-9A61-C0705DE6916D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E5C402-E1C2-41D5-9AB2-6695A11F49E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E5C402-E1C2-41D5-9AB2-6695A11F49E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E5C402-E1C2-41D5-9AB2-6695A11F49E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E5C402-E1C2-41D5-9AB2-6695A11F49E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A2878F59-144E-43A2-9A61-C0705DE6916D} = {8C14FF30-89E4-4361-B0CD-08540B0E2E58}
+		{02E5C402-E1C2-41D5-9AB2-6695A11F49E6} = {8C14FF30-89E4-4361-B0CD-08540B0E2E58}
 	EndGlobalSection
 EndGlobal

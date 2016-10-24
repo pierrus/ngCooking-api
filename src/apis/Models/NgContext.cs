@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace apis.Models
 {
-    public class NgContext : IdentityDbContext<Models.User, IdentityRole<Int32>, Int32>
+    public class NgContext : IdentityDbContext<Models.User, IdentityRole<Int32>, Int32>, INgContext
     {
         IConfigurationRoot _configuration;
 
@@ -22,7 +22,7 @@ namespace apis.Models
 
         public DbSet<Ingredient> Ingredients { get; set; }
 
-        public DbSet<Recette> Recettes { get; set; }
+        public virtual DbSet<Recette> Recettes { get; set; }
 
         public DbSet<Categorie> Categories { get; set; }
 

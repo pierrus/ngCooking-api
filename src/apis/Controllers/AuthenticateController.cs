@@ -13,15 +13,15 @@ namespace apis.Controllers
     {
         UserManager<User> _userManager;
         SignInManager<User> _signInManager;
-        NgContext _context;
+        IRepository<User> _communityRepository;
 
         public AuthenticateController(UserManager<User> userManager,
             SignInManager<User> signInManager,
-            NgContext context)
+            IRepository<User> communityRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
+            _communityRepository = communityRepository;
         }
 
         [HttpGet]
@@ -34,7 +34,7 @@ namespace apis.Controllers
             String userName = _userManager.GetUserName(User);
             String userId = _userManager.GetUserId(User);
 
-            User user = _context.Users.Where(u => u.UserName == userName).FirstOrDefault();
+            User user = _communityRepository.Get().Where(u => u.UserName == userName).FirstOrDefault();
 
             if (user == null)
                 return new StatusCodeResult((int)System.Net.HttpStatusCode.Unauthorized);

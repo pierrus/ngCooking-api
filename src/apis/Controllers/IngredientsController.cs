@@ -10,11 +10,11 @@ namespace apis.Controllers
     [Route("api/[controller]")]
     public class IngredientsController : Controller
     {
-        NgContext _context;
+        IRepository<Ingredient> _ingredientsRepository;
 
-        public IngredientsController(NgContext context)
+        public IngredientsController(IRepository<Ingredient> ingredientsRepository)
         {
-            _context = context;
+            _ingredientsRepository = ingredientsRepository;
         }
 
         // GET: /<controller>/
@@ -27,7 +27,7 @@ namespace apis.Controllers
         [HttpGet]
         public IEnumerable<Ingredient> Get()
         {
-            var ingredients = _context.Ingredients;
+            var ingredients = _ingredientsRepository.Get();
 
             return ingredients;
         }
@@ -36,7 +36,7 @@ namespace apis.Controllers
         [HttpGet("{id}")]
         public Ingredient Get(String id)
         {
-            var ingredient = _context.Ingredients.Where(r => r.Id == id).FirstOrDefault();
+            var ingredient = _ingredientsRepository.Get().Where(r => r.Id == id).FirstOrDefault();
 
             return ingredient;
         }
