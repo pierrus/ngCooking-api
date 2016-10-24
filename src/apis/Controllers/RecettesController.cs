@@ -27,15 +27,15 @@ namespace apis.Controllers
 
         // GET api/recettes/5
         [HttpGet]
-        public async Task<dynamic> Get([FromQuery] String id)
+        public dynamic Get([FromQuery] String id)
         {
             if (String.IsNullOrEmpty(id))
             {
                 var recettes = _recettesRepository.Get();
 
-                await recettes.ForEachAsync(r => r.Calories = r.IngredientsRecettes.Sum(i => i.Ingredient.Calories));
+                recettes.ToList().ForEach(r => r.Calories = r.IngredientsRecettes.Sum(i => i.Ingredient.Calories));
 
-                return recettes;
+                return recettes.ToList();
             }
             else
             {
@@ -43,7 +43,6 @@ namespace apis.Controllers
                     .FirstOrDefault();
 
                 recette.Calories = recette.IngredientsRecettes.Sum(i => i.Ingredient.Calories);
-
 
                 return recette;
             }

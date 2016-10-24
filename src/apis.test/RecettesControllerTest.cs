@@ -26,7 +26,8 @@ namespace apis
 
             List<Models.Recette> recettes = new List<Models.Recette>();
             recettes.Add(new Models.Recette { Calories = 100, Id = "recette-1", IsAvailable = true, IngredientsRecettes = new List<Models.IngredientRecette>() });
-            
+            recettes.Add(new Models.Recette { Calories = 200, Id = "recette-2", IsAvailable = true, IngredientsRecettes = new List<Models.IngredientRecette>() });
+
             _repositoryMock.Setup(x => x.Get())
                 .Returns(recettes.AsQueryable);
 
@@ -36,11 +37,21 @@ namespace apis
         [Fact]
         public void SingleGet()
         {
-            Task<dynamic> task = _recettesController.Get("recette-1");
-            Assert.IsType<Models.Recette>(task.Result);
+            dynamic result = _recettesController.Get("recette-1");
+            Assert.IsType<Models.Recette>(result);
 
-            Models.Recette recette = (Models.Recette)task.Result;
+            Models.Recette recette = (Models.Recette)result;
             Assert.Equal("recette-1", recette.Id);
+        }
+
+        [Fact]
+        public void MultipleGet()
+        {
+            dynamic result = _recettesController.Get(null);
+            Assert.IsType<List<Models.Recette>>(result);
+
+            List<Models.Recette> recettes = (List<Models.Recette>)result;
+            Assert.Equal(2, recettes.Count);
         }
     }
 }
