@@ -22,10 +22,6 @@ CREATE A DELIVERY PACKAGE
 
 Project was migrated from RC1 to 1.0 on 07/07/16
 
-TODO
-
-- Add unit tests in grunt, as condition for deployment package publishment
-
 .NET VERSION
 
 .NET version Core RC1
