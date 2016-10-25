@@ -13,6 +13,12 @@ USER GUIDE
 - Check connectionstring in appsettings.json
 - Deploy migration using "dotnet ef database update"
 - Start Kestrel server from command line by typing "dotnet run"
+- Check app on http://localhost:5000
+
+CREATE A DELIVERY PACKAGE
+- Restore npm packages from packages.json using "npm install"
+- Type "grunt package"
+- Package is located under "build" folder
 
 Project was migrated from RC1 to 1.0 on 07/07/16
 

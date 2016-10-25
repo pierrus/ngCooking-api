@@ -5,6 +5,9 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         // Exec pour l'exécution de commandes depuis l'invite de commandes Windows (pas Powershell!)
         exec: {
+			test: {
+				command: 'dotnet test ./src/apis.test'
+			},
             rmdir: {
                 command: 'if exist build rd build /S /Q',
                 // Cheat car impossible de supprimer l'erreur si le répertoire existe (alors qu'il est bien supprimé)
@@ -14,9 +17,12 @@ module.exports = function (grunt) {
                 command: 'mkdir build'
             },
             publish: {
-                command: 'dotnet publish .\\src\\apis -o build'
+                command: 'dotnet publish ./src/apis -o build'
             }
         },
+		jshint: {
+			all: ['src/apis/wwwroot/js/**/*.js']
+		},
         concat: {
             js: {
                 src: ['build/wwwroot/js/*.js',
@@ -55,12 +61,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-exec');
 
     // task(s).
-    grunt.registerTask('default', ['exec', 'concat', 'uglify', 'cssmin', 'usemin']);
+    grunt.registerTask('package', ['exec', 'concat', 'uglify', 'cssmin', 'usemin']);
 
 };
