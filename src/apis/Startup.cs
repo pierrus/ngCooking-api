@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using apis.Models;
+using apis.Data;
 
 namespace apis
 {
@@ -32,16 +33,18 @@ namespace apis
         {
             services.AddMvc().AddControllersAsServices();
 
-            services.AddTransient<IUserStore<Models.User>, UserStore<Models.User, IdentityRole<Int32>, Models.NgContext, Int32>>();
+            services.AddTransient<IUserStore<Models.User>, UserStore<Models.User, IdentityRole<Int32>, NgContext, Int32>>();
 
-            services.AddTransient<IRoleStore<IdentityRole<Int32>>, RoleStore<IdentityRole<Int32>, Models.NgContext, Int32>>();
+            services.AddTransient<IRoleStore<IdentityRole<Int32>>, RoleStore<IdentityRole<Int32>, NgContext, Int32>>();
 
             services.AddTransient<IRepository<Recette>, RecetteRepository>();
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddEntityFramework()
-                .AddDbContext<Models.NgContext>();
+                .AddDbContext<NgContext>();
+
+            services.AddTransient<INgContext, NgContext>();
 
             services.AddIdentity<Models.User, IdentityRole<Int32>>(sa =>
             {

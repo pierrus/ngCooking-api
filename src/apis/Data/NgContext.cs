@@ -6,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using apis.Models;
 
-namespace apis.Models
+namespace apis.Data
 {
     public class NgContext : IdentityDbContext<Models.User, IdentityRole<Int32>, Int32>, INgContext
     {

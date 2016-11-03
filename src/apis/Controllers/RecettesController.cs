@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using apis.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using apis.Data;
 
 namespace apis.Controllers
 {

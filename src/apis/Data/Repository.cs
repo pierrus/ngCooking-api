@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace apis.Models
+namespace apis.Data
 {
     public class Repository<TModel> : IRepository<TModel> where TModel:class
     {
         DbSet<TModel> _set = null;
-        NgContext _ngContext;
+        INgContext _ngContext;
 
-        public Repository(NgContext ngContext)
+        public Repository(INgContext ngContext)
         {
             _ngContext = ngContext;
             _set = ngContext.Set<TModel>();
