@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using apis.Models;
+using apis.Data;
 
 namespace apis.Controllers
 {

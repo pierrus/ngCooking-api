@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using apis.Models;
+using apis.Data;
 
 namespace apis.Controllers
 {

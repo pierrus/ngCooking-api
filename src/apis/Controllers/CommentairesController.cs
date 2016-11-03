@@ -1,4 +1,5 @@
-﻿using apis.Models;
+﻿using apis.Data;
+using apis.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
